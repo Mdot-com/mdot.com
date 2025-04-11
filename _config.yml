@@ -75,8 +75,8 @@ publication_category:
     title: 'Books'
   manuscripts:
     title: 'First author journal articles'    
-  conferences:
-    title: 'Works from the Armagh massive star group'
+  Armagh:
+    title: 'Other works'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
