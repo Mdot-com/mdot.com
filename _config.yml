@@ -32,13 +32,9 @@ author:
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-  impactstory      : # URL
-  orcid            : "http://orcid.org/yourorcidurl"
-  semantic         : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  researchgate     : # URL
-  scopus           : # URL
+  googlescholar    : "https://scholar.google.com/citations?user=wGumPcEAAAAJ&hl=en&authuser=1&oi=ao"
+  orcid            : "https://orcid.org/my-orcid?orcid=0000-0002-7442-1014"
+  researchgate     : "https://www.researchgate.net/profile/Gautham-Narayana-Sabhahit?ev=hdr_xprf"
 
   # Repositories and software development
   bitbucket        : # Username - Update with your username on the site
