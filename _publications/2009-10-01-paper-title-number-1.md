@@ -1,14 +1,20 @@
 ---
-title: "Paper Title Number 1"
+title: "Superadiabaticity and the metallicity independence of the Humphreys-Davidson limit"
 collection: publications
 category: manuscripts
-permalink: /publication/2009-10-01-paper-title-number-1
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2009-10-01
-venue: 'Journal 1'
-slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
-paperurl: 'http://academicpages.github.io/files/paper1.pdf'
-bibtexurl: 'http://academicpages.github.io/files/bibtex1.bib'
-citation: 'Your Name, You. (2009). &quot;Paper Title Number 1.&quot; <i>Journal 1</i>. 1(1).'
+permalink: /publication/2021-09-01-HD_limit
+excerpt: ''
+date: 2021-09-01
+venue: 'Monthly Notices of the Royal Astronomical Society, Volume 506, Issue 3, pp.4473-4487'
+paperurl: 'https://ui.adsabs.harvard.edu/abs/2021MNRAS.506.4473S/abstract'
+bibtexurl: 'https://arxiv.org/abs/2107.02183'
+citation: 'Sabhahit et al. (2021), Superadiabaticity and the metallicity independence of the Humphreys-Davidson limit, MNRAS, Volume 506, Issue 3, pp.4473-4487'
+authors:
+  - "Gautham N. Sabhahit"
+  - "Jorick S. Vink"
+  - "Erin R. Higgins"
+  - "Andreas A. C. Sander"
 ---
-The contents above will be part of a list of publications, if the user clicks the link for the publication than the contents of section will be rendered as a full page, allowing you to provide more information about the paper for the reader. When publications are displayed as a single page, the contents of the above "citation" field will automatically be included below this section in a smaller font.
+The Humphreys-Davidson (HD) limit sets the boundary between evolutionary channels of massive stars that end their lives either as the red supergiants (RSGs) or as the hotter blue supergiants (BSGs) and Wolf-Rayet stars. Mixing in the envelopes of massive stars close to their Eddington limit is crucial for investigating the upper luminosity limit of the coolest supergiants. We study the effects of excess mixing in superadiabatic layers that are dominated by radiation pressure, and we critically investigate the effects of mixing and mass-loss on the evolution of RSGs with log (Teff/K) < 3.68 - as a function of metallicity. Using MESA, we produce grids of massive star models at three metallicities: Galactic (Z⊙), LMC (12Z⊙), and SMC (15Z⊙), with both high and low amounts of overshooting to study the upper luminosity limit of RSGs. We systematically study the effects of excess mixing in the superadiabatic layers of post-main-sequence massive stars, overshooting above the hydrogen core and yellow supergiant (YSG) mass-loss rates on the fraction of core helium burning time spent as a RSG. We find that the excess mixing in the superadiabatic layers is stronger at lower metallicities, as it depends on the opacities in the hydrogen bump at log (Teff/K) ≈ 4, which become more pronounced at lower metallicity. This shifts the cut-off luminosities to lower values at lower metallicities, thus balancing the first-order effect of mass-loss. The opposing effects of mass-loss and excess envelope mixing during post-main-sequence evolution of stars with higher overshooting potentially results in a metallicity-independent upper luminosity limit.
+
+
