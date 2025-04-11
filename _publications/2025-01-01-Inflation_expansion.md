@@ -8,7 +8,7 @@ date: 2025-01-01
 venue: 'Astronomy & Astrophysics (A&A)'
 paperurl: 'https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..10S/abstract'
 bibtexurl: 'https://arxiv.org/abs/2410.22403'
-citation: 'Sabhahit & Vink (2025), A new mass estimate method with hydrodynamical atmospheres for very massive WNh stars, A&A'
+citation: 'Sabhahit & Vink (2025), A new mass estimate method with hydrodynamical atmospheres for very massive WNh stars, A&A, Volume 693, id.A10, 18 pp.'
 authors:
   - "Gautham N. Sabhahit"
   - "Jorick S. Vink"
