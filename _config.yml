@@ -22,14 +22,13 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.JPG"
+  avatar           : "profile.png"
   name             : "Dr. Gautham Sabhahit"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  bio              : "Interested in Massive star evolution"
+  location         : "Armagh, UK"
+  employer         : "Armagh Observatory"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "gauthamns96@gmail.com" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
