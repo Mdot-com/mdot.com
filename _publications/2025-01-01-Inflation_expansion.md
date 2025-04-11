@@ -3,7 +3,7 @@ title: "Stellar expansion or inflation? "
 collection: publications
 category: manuscripts
 permalink: /publication/2025-01-01-Inflation_expansion
-excerpt: '-'
+excerpt: 'This paper explores the differences between two very distinct phenomena that can result in a rapid increase in stellar radius over short timescales. The expansion of a stellar envelope beyond the Main Sequence in intermediate and massive stars has been documented for decades, whereas the concept of strong radial inflation as a star approaches its local Eddington limit is a more recent development. In this work, we elucidate the differences between these two phenomena through illustrative examples showing detailed internal structure.'
 date: 2025-01-01
 venue: 'Astronomy & Astrophysics (A&A)'
 paperurl: 'https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..10S/abstract'
