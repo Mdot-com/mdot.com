@@ -1,0 +1,16 @@
+---
+title: "Stellar expansion or inflation? "
+collection: publications
+category: manuscripts
+permalink: /publication/2025-01-01-Inflation_expansion
+excerpt: ''
+date: 2025-01-01
+venue: 'Astronomy & Astrophysics (A&A)'
+paperurl: 'https://ui.adsabs.harvard.edu/abs/2025A%26A...693A..10S/abstract'
+bibtexurl: 'https://arxiv.org/abs/2410.22403'
+citation: 'Sabhahit & Vink (2025), A new mass estimate method with hydrodynamical atmospheres for very massive WNh stars, A&A'
+authors:
+  - "Gautham N. Sabhahit"
+  - "Jorick S. Vink"
+---
+While stellar expansion after core-hydrogen exhaustion related to thermal imbalance has been documented for decades, the physical phenomenon of stellar inflation that occurs close to the Eddington limit has only come to the fore in recent years. We aim to elucidate the differences between these physical mechanisms for stellar radius enlargement, especially given that additional terms such as 'bloated' and 'puffed-up' stars have been introduced in the recent massive star literature. We employ single and binary star MESA structure and evolution models for constant mass, as well as models allowing the mass to change due to winds or binary interaction. We find cases that were previously attributed to stellar inflation in fact to be due to stellar expansion. We also highlight that while the opposite effect of expansion is contraction, the removal of an inflated zone should not be referred to as contraction but rather deflation, as the star is still in thermal balance. 
