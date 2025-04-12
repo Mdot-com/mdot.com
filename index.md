@@ -1,8 +1,10 @@
 ---
-layout: home
+layout: splash
+title: "Your Name"
 author_profile: true
 ---
 
-Welcome to my research site. I study stellar evolution and hydrodynamic models of massive stars...
+Welcome! I am an astrophysicist working on massive star winds and stellar evolution.  
+My research uses hydrodynamic modeling to study the most massive stars in the universe.
 
-[Check out my Evolution Models](/evolution/)
+Check out my [Publications](/publications/) and [CV](/files/cv.pdf).
