@@ -5,38 +5,7 @@ author_profile: true
 sidebar:
 ---
 
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        overflow: hidden;
-        font-family: Arial, sans-serif;
-    }
-
-    .bg-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        animation: slide 40s infinite;
-    }
-
-    .bg-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    @keyframes slide {
-        0% { background-image: url('assets/images/bg1.jpg'); }
-        25% { background-image: url('assets/images/bg2.jpg'); }
-        50% { background-image: url('assets/images/bg3.jpg'); }
-        75% { background-image: url('assets/images/bg4.jpg'); }
-        100% { background-image: url('assets/images/bg1.jpg'); }
-    }
-</style>
+<link rel="stylesheet" href="/assets/css/style.css">
 
 <div class="bg-container"></div>
 
