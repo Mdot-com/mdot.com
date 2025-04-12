@@ -49,7 +49,7 @@ body {
 
 /* Keyframes for each image */
 @keyframes fadeInOut1 {
-    0%, 100% {
+    0% {
         opacity: 0;
     }
     25%, 50% {
