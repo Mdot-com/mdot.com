@@ -33,50 +33,51 @@ body {
 }
 
 .bg-image:nth-child(1) {
+    background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
     animation: fadeInOut1 40s infinite;
 }
 
 .bg-image:nth-child(2) {
+    background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');
     animation: fadeInOut2 40s infinite;
 }
 
 .bg-image:nth-child(3) {
+    background-image: url('https://gautham-sabhahit.github.io/images/OB.png');
     animation: fadeInOut3 40s infinite;
 }
 
+/* Keyframes for each image */
 @keyframes fadeInOut1 {
     0%, 100% {
-        opacity: 0.3;
-    }
-    25% {
         opacity: 0;
     }
-    50% {
-        opacity: 0;
+    25%, 50% {
+        opacity: 0.3; /* Fade in with 30% opacity */
     }
     75% {
-        opacity: 0;
+        opacity: 0; /* Fade out */
     }
 }
 
 @keyframes fadeInOut2 {
-    0%, 50% {
-        opacity: 0;
+    0%, 25% {
+        opacity: 0; /* Fade out */
     }
-    25%, 75% {
-        opacity: 0.3;
+    50%, 75% {
+        opacity: 0.3; /* Fade in with 30% opacity */
     }
     100% {
-        opacity: 0;
+        opacity: 0; /* Fade out */
     }
 }
 
 @keyframes fadeInOut3 {
     0%, 50% {
-        opacity: 0;
+        opacity: 0; /* Fade out */
     }
     75%, 100% {
-        opacity: 0.3;
+        opacity: 0.3; /* Fade in with 30% opacity */
     }
 }
 
