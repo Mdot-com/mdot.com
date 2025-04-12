@@ -43,23 +43,3 @@
 ;
 
 
-// Background Carousel Styles
-.background-carousel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background-size: cover;
-  background-position: center;
-  animation: bgSlide 80s infinite;
-}
-
-@keyframes bgSlide {
-  0%    { background-image: url('/assets/images/bg1.jpg'); }
-  25%   { background-image: url('/assets/images/bg2.jpg'); }
-  50%   { background-image: url('/assets/images/bg3.jpg'); }
-  75%   { background-image: url('/assets/images/bg4.jpg'); }
-  100%  { background-image: url('/assets/images/bg1.jpg'); }
-}
