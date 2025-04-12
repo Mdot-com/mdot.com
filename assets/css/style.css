@@ -30,30 +30,32 @@ body {
 /* Keyframes for background images and opacity transition */
 @keyframes fadeInOut {
     0% {
-        opacity: 0;
+        opacity: 0.3;
         background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
     }
     25% {
-        opacity: 0.3; /* 30% opacity */
+        opacity: 0; 
     }
-    40% {
-        opacity: 1;
-    }
-    45% {
+    30% {
+        opacity: 0.3; /* Maintain 30% opacity */
         background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');
     }
-    70% {
-        opacity: 0.3; /* 30% opacity again */
+    35% {
+        opacity: 0; 
     }
-    85% {
-        opacity: 1;
-    }
-    90% {
+    55% {
+        opacity: 0.3; /* Fade out to white */
         background-image: url('https://gautham-sabhahit.github.io/images/OB.png');
     }
-    100% {
-        opacity: 0; /* Fade out to white */
+    60% {
+        opacity: 0; 
+    }
+    65% {
+        opacity: 0.3; /* Fade out to white */
         background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
+    }
+    100% {
+        opacity: 0; 
     }
 }
 
