@@ -22,9 +22,9 @@ body {
 }
 
 @keyframes slide {
-    0% { background-image: url('assets/images/image1.jpg'); }
-    25% { background-image: url('assets/images/image2.jpg'); }
-    50% { background-image: url('assets/images/image3.jpg'); }
-    75% { background-image: url('assets/images/image4.jpg'); }
-    100% { background-image: url('assets/images/image1.jpg'); }
+    0% { background-image: url('assets/images/bg1.jpg'); }
+    25% { background-image: url('assets/images/bg2.jpg'); }
+    50% { background-image: url('assets/images/bg3.jpg'); }
+    75% { background-image: url('assets/images/bg4.jpg'); }
+    100% { background-image: url('assets/images/bg1.jpg'); }
 }
