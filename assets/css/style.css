@@ -7,27 +7,27 @@ body {
 }
 
 .bg-container {
-    position: absolute;
+    position: fixed; /* Fixed position to ensure it stays behind content */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    animation: slide 40s infinite;
     z-index: -1; /* This ensures that the background stays behind the content */
+    animation: slide 40s infinite;
 }
 
 .bg-container img {
     width: 100%;
-    height: 100%;
+    height: 60%;
     object-fit: cover;
 }
 
 @keyframes slide {
-    0% { background-image: url('https://gautham-sabhahit.github.io/images/R136.png'); }
-    25% { background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png'); }
-    50% { background-image: url('https://gautham-sabhahit.github.io/images/R136a_1.png'); }
-    75% { background-image: url('https://gautham-sabhahit.github.io/images/R136a_2.png'); }
-    100% { background-image: url('https://gautham-sabhahit.github.io/images/R136.png'); }
+    0% { background-image: url('/images/R136.png'); }
+    25% { background-image: url('/images/R136a1_compare.png'); }
+    50% { background-image: url('/images/R136a_1.png'); }
+    75% { background-image: url('/images/R136a_2.png'); }
+    100% { background-image: url('/images/R136.png'); }
 }
 
 .content {
@@ -36,4 +36,3 @@ body {
     padding: 20px;
     color: white; /* Ensure the text is visible over the background */
 }
-
