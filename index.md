@@ -9,6 +9,11 @@ sidebar:
 
 <!-- Background container -->
 <div class="bg-container">
+  <div class="bg-image"></div>
+  <div class="bg-image"></div>
+  <div class="bg-image"></div>
+</div>
+
 </div>
 
 <!-- Content of the page -->
