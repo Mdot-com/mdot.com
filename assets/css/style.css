@@ -44,7 +44,8 @@ body {
 }
 
 @keyframes fadeInOut1 {
-    0% { opacity: 0.3; }
+    0% {opacity: 0;}
+    5% { opacity: 0.3; }
     60% { opacity: 0.3; }
     63.33% { opacity: 0; }
     100% { opacity: 0; }
