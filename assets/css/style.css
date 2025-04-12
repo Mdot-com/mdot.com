@@ -14,61 +14,47 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1; /* Ensure the background stays behind content */
-    animation: slide 40s infinite;
     background-size: cover; /* Ensure the images cover the entire viewport */
     background-position: center center; /* Center the background images */
     background-repeat: no-repeat; /* Prevent the background from repeating */
-    opacity: 0; /* Start with 0 opacity */
-    transition: opacity 2s ease-in-out; /* Transition for fading in */
-}
-
-.bg-container::before {
-    content: ""; /* Create a pseudo-element for the overlay */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 70% opacity black overlay */
-    z-index: 1; /* Make sure overlay stays above the background */
 }
 
 .bg-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0; /* Start with 0 opacity */
+    animation: fadeInOut 40s infinite;
 }
 
-@keyframes slide {
-    0% { 
-        background-image: url('https://gautham-sabhahit.github.io/images/R136.png'); 
+/* Keyframes for background images and opacity transition */
+@keyframes fadeInOut {
+    0% {
         opacity: 0;
+        background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
     }
-    20% { 
-        opacity: 1; 
+    20% {
+        opacity: 1;
     }
-    25% { 
+    25% {
         background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');
-        opacity: 1;
     }
-    45% { 
+    45% {
         opacity: 0;
     }
-    50% { 
+    50% {
         background-image: url('https://gautham-sabhahit.github.io/images/OB.png');
-        opacity: 0;
     }
-    70% { 
+    70% {
         opacity: 1;
     }
-    75% { 
+    75% {
         background-image: url('https://gautham-sabhahit.github.io/images/R136a_2.png');
-        opacity: 1;
     }
-    95% { 
+    95% {
         opacity: 0;
     }
-    100% { 
+    100% {
         background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
         opacity: 0;
     }
