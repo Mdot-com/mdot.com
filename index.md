@@ -9,9 +9,6 @@ sidebar:
 
 <!-- Background container -->
 <div class="bg-container">
-    <div class="bg-image" style="background-image: url('https://gautham-sabhahit.github.io/images/R136.png');"></div>
-    <div class="bg-image" style="background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');"></div>
-    <div class="bg-image" style="background-image: url('https://gautham-sabhahit.github.io/images/OB.png');"></div>
 </div>
 
 <!-- Content of the page -->
