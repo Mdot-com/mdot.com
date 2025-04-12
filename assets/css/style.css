@@ -16,6 +16,9 @@ body {
     z-index: -1; /* Ensure the background stays behind content */
     animation: slide 40s infinite;
     opacity: 0.3; /* 70% dullness (opacity is the inverse, so 0.3 means 30% visible, 70% dull) */
+    background-size: cover; /* Ensure the images cover the entire viewport */
+    background-position: center center; /* Center the background images */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
 }
 
 .bg-container img {
@@ -38,4 +41,3 @@ body {
     padding: 20px;
     color: black; /* Ensure all text appears black */
 }
-
