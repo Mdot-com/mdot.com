@@ -40,21 +40,21 @@ body {
         opacity: 0.3; /* Maintain 30% opacity */
         background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');
     }
-    35% {
+    50% {
         opacity: 0; 
     }
     55% {
         opacity: 0.3; /* Fade out to white */
         background-image: url('https://gautham-sabhahit.github.io/images/OB.png');
     }
-    60% {
+    75% {
         opacity: 0; 
     }
-    65% {
+    80% {
         opacity: 0.3; /* Fade out to white */
         background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
     }
-    100% {
+    95% {
         opacity: 0; 
     }
 }
