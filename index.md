@@ -1,9 +1,9 @@
 ---
 layout: archive
-title: "Home"
+title: ""
 author_profile: true
 sidebar:
-  nav: "main"
+
 ---
 
 Welcome! I am an astrophysicist working on massive star winds and stellar evolution.
