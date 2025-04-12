@@ -30,37 +30,37 @@ body {
 
 .bg-image:nth-child(1) {
     background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
-    animation: fadeInOut1 15s infinite;
+    animation: fadeInOut1 60s infinite;
 }
 
 .bg-image:nth-child(2) {
     background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');
-    animation: fadeInOut2 15s infinite;
+    animation: fadeInOut2 60s infinite;
 }
 
 .bg-image:nth-child(3) {
     background-image: url('https://gautham-sabhahit.github.io/images/OB.png');
-    animation: fadeInOut3 15s infinite;
+    animation: fadeInOut3 60s infinite;
 }
 
 @keyframes fadeInOut1 {
     0% { opacity: 0.3; }
-    30% { opacity: 0.3; }
-    33.33% { opacity: 0; }
+    60% { opacity: 0.3; }
+    63.33% { opacity: 0; }
     100% { opacity: 0; }
 }
 
 @keyframes fadeInOut2 {
-    0%, 33.33% { opacity: 0; }
-    33.34% { opacity: 0.3; }
-    63% { opacity: 0.3; }
-    66.66% { opacity: 0; }
+    0%, 63.33% { opacity: 0; }
+    63.34% { opacity: 0.3; }
+    83% { opacity: 0.3; }
+    86.66% { opacity: 0; }
     100% { opacity: 0; }
 }
 
 @keyframes fadeInOut3 {
-    0%, 66.66% { opacity: 0; }
-    66.67% { opacity: 0.3; }
+    0%, 86.66% { opacity: 0; }
+    86.67% { opacity: 0.3; }
     96% { opacity: 0.3; }
     100% { opacity: 0; }
 }
