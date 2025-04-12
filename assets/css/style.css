@@ -33,30 +33,27 @@ body {
         opacity: 0;
         background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
     }
-    20% {
-        opacity: 1;
-    }
     25% {
-        background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');
+        opacity: 0.3; /* 30% opacity */
+    }
+    40% {
+        opacity: 1;
     }
     45% {
-        opacity: 0;
-    }
-    50% {
-        background-image: url('https://gautham-sabhahit.github.io/images/OB.png');
+        background-image: url('https://gautham-sabhahit.github.io/images/R136a1_compare.png');
     }
     70% {
+        opacity: 0.3; /* 30% opacity again */
+    }
+    85% {
         opacity: 1;
     }
-    75% {
-        background-image: url('https://gautham-sabhahit.github.io/images/R136a_2.png');
-    }
-    95% {
-        opacity: 0;
+    90% {
+        background-image: url('https://gautham-sabhahit.github.io/images/OB.png');
     }
     100% {
+        opacity: 0; /* Fade out to white */
         background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
-        opacity: 0;
     }
 }
 
