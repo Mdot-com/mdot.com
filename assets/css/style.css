@@ -52,13 +52,10 @@ body {
     0%, 100% {
         opacity: 0;
     }
-    10%, 20% {
+    25%, 50% {
         opacity: 0.3; /* Fade in with 30% opacity */
     }
-    25% {
-        opacity: 0.3; /* Hold 30% opacity */
-    }
-    30% {
+    75% {
         opacity: 0; /* Fade out */
     }
 }
@@ -67,13 +64,10 @@ body {
     0%, 25% {
         opacity: 0; /* Fade out */
     }
-    35%, 45% {
+    50%, 75% {
         opacity: 0.3; /* Fade in with 30% opacity */
     }
-    50% {
-        opacity: 0; /* Fade out */
-    }
-    75% {
+    100% {
         opacity: 0; /* Fade out */
     }
 }
@@ -82,14 +76,8 @@ body {
     0%, 50% {
         opacity: 0; /* Fade out */
     }
-    55%, 65% {
+    75%, 100% {
         opacity: 0.3; /* Fade in with 30% opacity */
-    }
-    70% {
-        opacity: 0; /* Fade out */
-    }
-    100% {
-        opacity: 0; /* Fade out */
     }
 }
 
