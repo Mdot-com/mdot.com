@@ -23,11 +23,11 @@ body {
 }
 
 @keyframes slide {
-    0% { background-image: url('images/R136.jpg'); }
-    25% { background-image: url('images/R136a1_compare.jpg'); }
-    50% { background-image: url('images/R136a_1.jpg'); }
-    75% { background-image: url('images/R136a_2.jpg'); }
-    100% { background-image: url('images/R136.jpg'); }
+    0% { background-image: url('images/R136.png'); }
+    25% { background-image: url('images/R136a1_compare.png'); }
+    50% { background-image: url('images/R136a_1.png'); }
+    75% { background-image: url('images/R136a_2.png'); }
+    100% { background-image: url('images/R136.png'); }
 }
 
 .content {
