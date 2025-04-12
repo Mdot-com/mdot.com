@@ -32,7 +32,6 @@ body {
     transition: opacity 2s ease-in-out; /* Transition for opacity */
 }
 
-/* Keyframes for seamless back-to-back transitions */
 .bg-image:nth-child(1) {
     background-image: url('https://gautham-sabhahit.github.io/images/R136.png');
     animation: fadeInOut1 40s infinite;
@@ -48,39 +47,46 @@ body {
     animation: fadeInOut3 40s infinite;
 }
 
-/* Keyframes for first image */
+/* Keyframes for each image */
 @keyframes fadeInOut1 {
     0%, 100% {
         opacity: 0;
     }
-    10%, 25% {
+    10%, 20% {
         opacity: 0.3; /* Fade in with 30% opacity */
+    }
+    25% {
+        opacity: 0.3; /* Hold 30% opacity */
     }
     50% {
         opacity: 0; /* Fade out */
     }
 }
 
-/* Keyframes for second image */
 @keyframes fadeInOut2 {
     0%, 25% {
-        opacity: 0; /* Fade out from first image */
+        opacity: 0; /* Fade out */
     }
-    35%, 50% {
+    35%, 45% {
         opacity: 0.3; /* Fade in with 30% opacity */
+    }
+    50% {
+        opacity: 0; /* Fade out */
     }
     75% {
         opacity: 0; /* Fade out */
     }
 }
 
-/* Keyframes for third image */
 @keyframes fadeInOut3 {
     0%, 50% {
-        opacity: 0; /* Fade out from second image */
+        opacity: 0; /* Fade out */
     }
-    55%, 70% {
+    55%, 65% {
         opacity: 0.3; /* Fade in with 30% opacity */
+    }
+    70% {
+        opacity: 0; /* Fade out */
     }
     100% {
         opacity: 0; /* Fade out */
