@@ -58,7 +58,7 @@ body {
     25% {
         opacity: 0.3; /* Hold 30% opacity */
     }
-    50% {
+    30% {
         opacity: 0; /* Fade out */
     }
 }
