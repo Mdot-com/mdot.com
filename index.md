@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: archive
 title: "Home"
 author_profile: true
 sidebar:
