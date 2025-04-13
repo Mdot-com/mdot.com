@@ -5,14 +5,15 @@ author_profile: true
 sidebar:
 ---
 
+<!--
 <link rel="stylesheet" href="/assets/css/style.css">
 
-<!-- Background container -->
 <div class="bg-container">
   <div class="bg-image"></div>
   <div class="bg-image"></div>
   <div class="bg-image"></div>
 </div>
+-->
 
 
 
