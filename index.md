@@ -23,4 +23,4 @@ sidebar:
 <p style="font-size: 1.1em;">Explore my:</p>
 
 - [Publications](/publications/)
-- [CV](/files/cv.pdf)
+
