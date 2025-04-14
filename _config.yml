@@ -73,9 +73,11 @@ publication_category:
   books:
     title: 'Books'
   manuscripts:
-    title: 'First author journal articles'    
-  Collab:
-    title: 'Other collaborative works'
+    title: 'First author papers'    
+  collab:
+    title: 'Other collaborative papers'
+  conference:
+    title: 'Conference proceedings'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
