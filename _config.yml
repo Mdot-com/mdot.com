@@ -74,8 +74,8 @@ publication_category:
     title: 'Books'
   manuscripts:
     title: 'First author journal articles'    
-  Armagh:
-    title: 'Other works'
+  Collab:
+    title: 'Other collaborative works'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
