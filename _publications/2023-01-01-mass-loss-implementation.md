@@ -1,7 +1,7 @@
 ---
 title: "Mass loss implementation and temperature evolution of very massive stars"
 collection: publications
-category: manuscripts
+category: conference
 permalink: /publication/2023-01-01-mass-loss-implementation
 excerpt: ''
 date: 2023-01-01
