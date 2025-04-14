@@ -1,7 +1,7 @@
 ---
 title: "On the Z-(in)dependence of the Humphreys-Davidson Limit"
 collection: publications
-category: manuscripts
+category: conference
 permalink: /publication/2024-01-01-on-the-zindependence
 excerpt: ''
 date: 2024-01-01
