@@ -8,15 +8,11 @@ sidebar:
 <!-- Content of the page -->
 <p style="font-size: 1.1em;">Hello and welcome to my personal webpage! I am a stellar astrophysicist with a broad interest in massive stars. I have experience in stellar evolution modelling following the life and death of massive stars, as well as atmosphere modelling studying their strong stellar wind structure and mass-loss physics.</p>
 
-<p style="font-size: 1.1em;">Explore my:</p>
-
-- [Publications](/publications/)
-
 ## Recent Publications
 
 <ul>
-  {% assign recent_pubs = site.publications | sort: "date" | reverse | slice: 0, 3 %}
-  {% for pub in recent_pubs %}
+  {% assign first_author_pubs = site.publications | where: "collection", "publications" | sort: "date" | reverse | slice: 0, 3 %}
+  {% for pub in first_author_pubs %}
     <li style="margin-bottom: 1.5em;">
       <strong><a href="{{ pub.url }}">{{ pub.title }}</a></strong><br>
       <em>{{ pub.authors | join: ", " }}</em><br>
