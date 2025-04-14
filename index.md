@@ -5,18 +5,6 @@ author_profile: true
 sidebar:
 ---
 
-<!--
-<link rel="stylesheet" href="/assets/css/style.css">
-
-<div class="bg-container">
-  <div class="bg-image"></div>
-  <div class="bg-image"></div>
-  <div class="bg-image"></div>
-</div>
--->
-
-
-
 <!-- Content of the page -->
 <p style="font-size: 1.1em;">Hello and welcome to my personal webpage! I am a stellar astrophysicist with a broad interest in massive stars. I have experience in stellar evolution modelling following the life and death of massive stars, as well as atmosphere modelling studying their strong stellar wind structure and mass-loss physics.</p>
 
@@ -24,3 +12,17 @@ sidebar:
 
 - [Publications](/publications/)
 
+## Recent Publications
+
+<ul>
+  {% assign recent_pubs = site.publications | sort: "date" | reverse | slice: 0, 3 %}
+  {% for pub in recent_pubs %}
+    <li style="margin-bottom: 1.5em;">
+      <strong><a href="{{ pub.url }}">{{ pub.title }}</a></strong><br>
+      <em>{{ pub.authors | join: ", " }}</em><br>
+      <span>{{ pub.content | strip_html | truncatewords: 30 }}</span>
+    </li>
+  {% endfor %}
+</ul>
+
+<p><a href="/publications/">More publications →</a></p>
