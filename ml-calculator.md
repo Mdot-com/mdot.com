@@ -16,7 +16,13 @@ nav_order: 3
     <h3>Compute Luminosity from Mass</h3>
     <input type="number" id="massInput" placeholder="Mass (M)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput1" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
-    <label><input type="checkbox" id="smcCheckbox1"> Use SMC metallicity</label>
+    
+    <label for="smcDropdown1">Select Metallicity:</label>
+    <select id="smcDropdown1" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+      <option value="false">LMC</option>
+      <option value="true">SMC</option>
+    </select>
+
     <button onclick="getLuminosity()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
     <p id="luminosityResult" style="margin-top: 1rem; font-weight: bold;"></p>
   </div>
@@ -26,7 +32,13 @@ nav_order: 3
     <h3>Compute Mass from Luminosity</h3>
     <input type="number" id="luminosityInput" placeholder="Luminosity (L)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput2" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
-    <label><input type="checkbox" id="smcCheckbox2"> Use SMC metallicity</label>
+    
+    <label for="smcDropdown2">Select Metallicity:</label>
+    <select id="smcDropdown2" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+      <option value="false">LMC</option>
+      <option value="true">SMC</option>
+    </select>
+
     <button onclick="getMass()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
     <p id="massResult" style="margin-top: 1rem; font-weight: bold;"></p>
   </div>
@@ -36,7 +48,7 @@ nav_order: 3
   async function getLuminosity() {
     const m = parseFloat(document.getElementById('massInput').value);
     const x = parseFloat(document.getElementById('hydrogenInput1').value);
-    const use_smc = document.getElementById('smcCheckbox1').checked;
+    const use_smc = document.getElementById('smcDropdown1').value === "true";
 
     const response = await fetch("https://hkxx28fqq4.execute-api.eu-north-1.amazonaws.com/add", {
       method: "POST",
@@ -52,7 +64,7 @@ nav_order: 3
   async function getMass() {
     const L = parseFloat(document.getElementById('luminosityInput').value);
     const x = parseFloat(document.getElementById('hydrogenInput2').value);
-    const use_smc = document.getElementById('smcCheckbox2').checked;
+    const use_smc = document.getElementById('smcDropdown2').value === "true";
 
     const response = await fetch("https://hkxx28fqq4.execute-api.eu-north-1.amazonaws.com/add", {
       method: "POST",
