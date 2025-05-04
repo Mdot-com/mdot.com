@@ -19,7 +19,7 @@ nav_order: 3
     const a = parseFloat(document.getElementById('num1').value);
     const b = parseFloat(document.getElementById('num2').value);
 
-    const response = await fetch('https://YOUR-API-ID.execute-api.YOUR-REGION.amazonaws.com/calc-add', {
+    const response = await fetch('https://hkxx28fqq4.execute-api.eu-north-1.amazonaws.com/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ a: a, b: b })
