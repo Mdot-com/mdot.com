@@ -6,7 +6,7 @@ nav_order: 3
 
 <h1>ML Calculator</h1>
 
-<p>Enter two numbers to add them using the AWS backend:</p>
+<p>Enter two numbers to add them:</p>
 
 <input type="number" id="num1" placeholder="First number">
 <input type="number" id="num2" placeholder="Second number">
