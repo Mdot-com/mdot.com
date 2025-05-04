@@ -4,34 +4,65 @@ title: ML Calculator
 nav_order: 3
 ---
 
-<div style="max-width: 500px; margin: 2rem auto; text-align: center;">
-  <h1>Minimum, maximum and pure He luminosity for input Mass and surface Hydrogen</h1>
+{% raw %}
+<div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
 
-  <div style="margin-top: 2rem; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; text-align: left;">
-    <p>Enter two numbers to add them using the AWS backend:</p>
+  <h2 style="margin-bottom: 2rem;">
+    Minimum, maximum and pure He luminosity for input Mass and surface Hydrogen
+  </h2>
 
-    <input type="number" id="num1" placeholder="First number" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
+  <!-- Top Section: Luminosity -->
+  <div style="border: 1px solid #ccc; padding: 1rem; border-radius: 10px; margin-bottom: 2rem; text-align: left;">
+    <h3>Compute Luminosity from Mass</h3>
+    <input type="number" id="massInput" placeholder="Mass (M)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+    <input type="number" id="hydrogenInput1" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+    <label><input type="checkbox" id="smcCheckbox1"> Use SMC metallicity</label>
+    <button onclick="getLuminosity()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
+    <p id="luminosityResult" style="margin-top: 1rem; font-weight: bold;"></p>
+  </div>
 
-    <input type="number" id="num2" placeholder="Second number" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;">
-
-    <button onclick="addNumbers()" style="width: 100%; padding: 0.5rem;">Add</button>
-
-    <p id="result" style="margin-top: 1rem; font-weight: bold;"></p>
+  <!-- Bottom Section: Mass -->
+  <div style="border: 1px solid #ccc; padding: 1rem; border-radius: 10px; text-align: left;">
+    <h3>Compute Mass from Luminosity</h3>
+    <input type="number" id="luminosityInput" placeholder="Luminosity (L)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+    <input type="number" id="hydrogenInput2" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+    <label><input type="checkbox" id="smcCheckbox2"> Use SMC metallicity</label>
+    <button onclick="getMass()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
+    <p id="massResult" style="margin-top: 1rem; font-weight: bold;"></p>
   </div>
 </div>
 
 <script>
-  async function addNumbers() {
-    const a = parseFloat(document.getElementById('num1').value);
-    const b = parseFloat(document.getElementById('num2').value);
+  async function getLuminosity() {
+    const m = parseFloat(document.getElementById('massInput').value);
+    const x = parseFloat(document.getElementById('hydrogenInput1').value);
+    const use_smc = document.getElementById('smcCheckbox1').checked;
 
-    const response = await fetch('https://hkxx28fqq4.execute-api.eu-north-1.amazonaws.com/add', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ a: a, b: b })
+    const response = await fetch("https://hkxx28fqq4.execute-api.eu-north-1.amazonaws.com/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "luminosity", m, x, use_smc })
     });
 
     const data = await response.json();
-    document.getElementById('result').innerText = "Sum: " + data.sum;
+    document.getElementById('luminosityResult').innerText =
+      `L_min: ${data.L_min?.toFixed(5)}, L_max: ${data.L_max?.toFixed(5)}, Pure He L: ${data.L_pure_He?.toFixed(5)}`;
+  }
+
+  async function getMass() {
+    const L = parseFloat(document.getElementById('luminosityInput').value);
+    const x = parseFloat(document.getElementById('hydrogenInput2').value);
+    const use_smc = document.getElementById('smcCheckbox2').checked;
+
+    const response = await fetch("https://hkxx28fqq4.execute-api.eu-north-1.amazonaws.com/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "mass", L, x, use_smc })
+    });
+
+    const data = await response.json();
+    document.getElementById('massResult').innerText =
+      `M_min: ${data.M_min}, M_max: ${data.M_max}, Pure He M: ${data.M_pure_He}`;
   }
 </script>
+{% endraw %}
