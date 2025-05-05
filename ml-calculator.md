@@ -94,11 +94,15 @@ Please input the following values to calculate **Masses (M)**:
         .then(response => response.json())
         .then(data => {
             let output = document.getElementById('luminosity-output');
-            output.innerHTML = `
-                <p><strong>L_min:</strong> ${data.L_min}</p>
-                <p><strong>L_max:</strong> ${data.L_max}</p>
-                <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
-            `;
+            if (data.Pure_He_Luminosity) {
+                output.innerHTML = `
+                    <p><strong>L_min:</strong> ${data.L_min}</p>
+                    <p><strong>L_max:</strong> ${data.L_max}</p>
+                    <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
+                `;
+            } else {
+                output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+            }
         })
         .catch(error => {
             document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
@@ -133,11 +137,15 @@ Please input the following values to calculate **Masses (M)**:
         .then(response => response.json())
         .then(data => {
             let output = document.getElementById('mass-output');
-            output.innerHTML = `
-                <p><strong>M_min:</strong> ${data.M_min}</p>
-                <p><strong>M_max:</strong> ${data.M_max}</p>
-                <p><strong>Pure_He_Mass:</strong> ${data.Pure_He_Mass}</p>
-            `;
+            if (data.Pure_He_Mass) {
+                output.innerHTML = `
+                    <p><strong>M_min:</strong> ${data.M_min}</p>
+                    <p><strong>M_max:</strong> ${data.M_max}</p>
+                    <p><strong>Pure_He_Mass:</strong> ${data.Pure_He_Mass}</p>
+                `;
+            } else {
+                output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+            }
         })
         .catch(error => {
             document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
