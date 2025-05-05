@@ -23,8 +23,8 @@ nav_order: 3
     <input type="number" id="massInput" placeholder="Mass (M)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput1" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     
-    <label for="zInput1">Enter Metallicity (Z):</label>
-    <input type="number" id="zInput1" placeholder="Z value" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+    <label for="ZInput1">Enter Metallicity (Z):</label>
+    <input type="number" id="ZInput1" placeholder="Metallicity (Z)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;" step="0.001" min="0.001" max="0.01">
 
     <button onclick="getLuminosity()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
     <div id="luminosityResult" style="margin-top: 1rem; font-size: 1rem;"></div>
@@ -36,8 +36,8 @@ nav_order: 3
     <input type="number" id="luminosityInput" placeholder="Luminosity (L)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput2" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     
-    <label for="zInput2">Enter Metallicity (Z):</label>
-    <input type="number" id="zInput2" placeholder="Z value" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
+    <label for="ZInput2">Enter Metallicity (Z):</label>
+    <input type="number" id="ZInput2" placeholder="Metallicity (Z)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;" step="0.001" min="0.001" max="0.01">
 
     <button onclick="getMass()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
     <div id="massResult" style="margin-top: 1rem; font-size: 1rem;"></div>
@@ -59,19 +59,30 @@ nav_order: 3
   async function getLuminosity() {
     const m = parseFloat(document.getElementById('massInput').value);
     const x = parseFloat(document.getElementById('hydrogenInput1').value);
-    const Z = parseFloat(document.getElementById('zInput1').value);
+    const Z = parseFloat(document.getElementById('ZInput1').value);  // Correctly read Z value
+
+    if (isNaN(Z)) {
+      alert("Please enter a valid Metallicity (Z) value.");
+      return;
+    }
 
     const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode: "luminosity", m, x, Z })
+      body: JSON.stringify({ choice: "1", m, x, Z })
     });
 
     const data = await response.json();
+
+    if (data.error) {
+      alert(`Error: ${data.error}`);
+      return;
+    }
+
     const latex = 
       "\\text{Minimum } \\log(L/L_\\odot):\\ " + data.L_min.toFixed(5) + "<br>" +
       "\\text{Maximum } \\log(L/L_\\odot):\\ " + data.L_max.toFixed(5) + "<br>" +
-      "\\text{Pure He } \\log(L/L_\\odot):\\ " + data.L_pure_He.toFixed(5);
+      "\\text{Pure He } \\log(L/L_\\odot):\\ " + data.Pure_He_Luminosity.toFixed(5);
 
     renderLatex("luminosityResult", latex);
   }
@@ -79,19 +90,30 @@ nav_order: 3
   async function getMass() {
     const L = parseFloat(document.getElementById('luminosityInput').value);
     const x = parseFloat(document.getElementById('hydrogenInput2').value);
-    const Z = parseFloat(document.getElementById('zInput2').value);
+    const Z = parseFloat(document.getElementById('ZInput2').value);  // Correctly read Z value
+
+    if (isNaN(Z)) {
+      alert("Please enter a valid Metallicity (Z) value.");
+      return;
+    }
 
     const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode: "mass", L, x, Z })
+      body: JSON.stringify({ choice: "2", L, x, Z })
     });
 
     const data = await response.json();
+
+    if (data.error) {
+      alert(`Error: ${data.error}`);
+      return;
+    }
+
     const latex = 
       "\\text{Minimum mass } (M/M_\\odot):\\ " + data.M_min + "<br>" +
       "\\text{Maximum mass } (M/M_\\odot):\\ " + data.M_max + "<br>" +
-      "\\text{Pure He mass } (M/M_\\odot):\\ " + data.M_pure_He;
+      "\\text{Pure He mass } (M/M_\\odot):\\ " + data.Pure_He_Mass;
 
     renderLatex("massResult", latex);
   }
