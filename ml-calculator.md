@@ -27,7 +27,7 @@ Please input the following values to calculate the **Luminosity (L)**:
         <input type="number" id="z_top" name="z_top" step="any" required>
         <br><br>
 
-        <button type="button" onclick="calculateLuminosity()">Calculate Luminosity (L)</button>
+        <button type="button" id="calculate-luminosity">Calculate Luminosity (L)</button>
     </div>
 </form>
 
@@ -56,7 +56,7 @@ Please input the following values to calculate **Masses (M)**:
         <input type="number" id="z_bottom" name="z_bottom" step="any" required>
         <br><br>
 
-        <button type="button" onclick="calculateMasses()">Calculate Masses (M)</button>
+        <button type="button" id="calculate-masses">Calculate Masses (M)</button>
     </div>
 </form>
 
@@ -66,90 +66,92 @@ Please input the following values to calculate **Masses (M)**:
 </div>
 
 <script>
-    // Function to calculate Luminosity (L)
-    function calculateLuminosity() {
-        const m = parseFloat(document.getElementById('m_top').value);
-        const x = parseFloat(document.getElementById('x_top').value);
-        const z = parseFloat(document.getElementById('z_top').value);
+    // Wait for the DOM to load completely before attaching event listeners
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to calculate Luminosity (L)
+        document.getElementById('calculate-luminosity').addEventListener('click', function() {
+            const m = parseFloat(document.getElementById('m_top').value);
+            const x = parseFloat(document.getElementById('x_top').value);
+            const z = parseFloat(document.getElementById('z_top').value);
 
-        if (!m || !x || !z) {
-            alert('Please enter Mass (M), Hydrogen Mass Fraction (X), and Metallicity (Z).');
-            return;
-        }
-
-        const data = {
-            "choice": "1",
-            "Z": z,
-            "m": m,
-            "x": x
-        };
-
-        fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            let output = document.getElementById('luminosity-output');
-            if (data.Pure_He_Luminosity) {
-                output.innerHTML = `
-                    <p><strong>L_min:</strong> ${data.L_min}</p>
-                    <p><strong>L_max:</strong> ${data.L_max}</p>
-                    <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
-                `;
-            } else {
-                output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+            if (!m || !x || !z) {
+                alert('Please enter Mass (M), Hydrogen Mass Fraction (X), and Metallicity (Z).');
+                return;
             }
-        })
-        .catch(error => {
-            document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+
+            const data = {
+                "choice": "1",
+                "Z": z,
+                "m": m,
+                "x": x
+            };
+
+            fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                let output = document.getElementById('luminosity-output');
+                if (data.Pure_He_Luminosity) {
+                    output.innerHTML = `
+                        <p><strong>L_min:</strong> ${data.L_min}</p>
+                        <p><strong>L_max:</strong> ${data.L_max}</p>
+                        <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
+                    `;
+                } else {
+                    output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+            });
         });
-    }
 
-    // Function to calculate Masses (M)
-    function calculateMasses() {
-        const l = parseFloat(document.getElementById('l_bottom').value);
-        const x = parseFloat(document.getElementById('x_bottom').value);
-        const z = parseFloat(document.getElementById('z_bottom').value);
+        // Function to calculate Masses (M)
+        document.getElementById('calculate-masses').addEventListener('click', function() {
+            const l = parseFloat(document.getElementById('l_bottom').value);
+            const x = parseFloat(document.getElementById('x_bottom').value);
+            const z = parseFloat(document.getElementById('z_bottom').value);
 
-        if (!l || !x || !z) {
-            alert('Please enter Luminosity (L), Hydrogen Mass Fraction (X), and Metallicity (Z).');
-            return;
-        }
-
-        const data = {
-            "choice": "2",
-            "Z": z,
-            "L": l,
-            "x": x
-        };
-
-        fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            let output = document.getElementById('mass-output');
-            if (data.Pure_He_Mass) {
-                output.innerHTML = `
-                    <p><strong>M_min:</strong> ${data.M_min}</p>
-                    <p><strong>M_max:</strong> ${data.M_max}</p>
-                    <p><strong>Pure_He_Mass:</strong> ${data.Pure_He_Mass}</p>
-                `;
-            } else {
-                output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+            if (!l || !x || !z) {
+                alert('Please enter Luminosity (L), Hydrogen Mass Fraction (X), and Metallicity (Z).');
+                return;
             }
-        })
-        .catch(error => {
-            document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+
+            const data = {
+                "choice": "2",
+                "Z": z,
+                "L": l,
+                "x": x
+            };
+
+            fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                let output = document.getElementById('mass-output');
+                if (data.Pure_He_Mass) {
+                    output.innerHTML = `
+                        <p><strong>M_min:</strong> ${data.M_min}</p>
+                        <p><strong>M_max:</strong> ${data.M_max}</p>
+                        <p><strong>Pure_He_Mass:</strong> ${data.Pure_He_Mass}</p>
+                    `;
+                } else {
+                    output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+                }
+            })
+            .catch(error => {
+                document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+            });
         });
-    }
+    });
 </script>
-
