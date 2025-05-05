@@ -4,15 +4,12 @@ title: ML Calculator
 nav_order: 3
 ---
 
-{% raw %}
-<!-- Load MathJax v3 -->
-<script>
-  window.MathJax = {
-    tex: { inlineMath: [['\\(', '\\)']] },
-    svg: { fontCache: 'global' }
-  };
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body, {delimiters: [{left: '\\(', right: '\\)', display: false}]});">
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
 <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
 
@@ -25,7 +22,7 @@ nav_order: 3
     <h3>Compute Luminosity from Mass</h3>
     <input type="number" id="massInput" placeholder="Mass (M)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput1" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
-
+    
     <label for="smcDropdown1">Select Metallicity:</label>
     <select id="smcDropdown1" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
       <option value="false">LMC</option>
@@ -33,7 +30,7 @@ nav_order: 3
     </select>
 
     <button onclick="getLuminosity()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
-    <p id="luminosityResult" style="margin-top: 1rem; font-size: 1rem;"></p>
+    <div id="luminosityResult" style="margin-top: 1rem; font-size: 1rem;"></div>
   </div>
 
   <!-- Bottom Section: Mass -->
@@ -41,7 +38,7 @@ nav_order: 3
     <h3>Compute Mass from Luminosity</h3>
     <input type="number" id="luminosityInput" placeholder="Luminosity (L)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput2" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
-
+    
     <label for="smcDropdown2">Select Metallicity:</label>
     <select id="smcDropdown2" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
       <option value="false">LMC</option>
@@ -49,11 +46,22 @@ nav_order: 3
     </select>
 
     <button onclick="getMass()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
-    <p id="massResult" style="margin-top: 1rem; font-size: 1rem;"></p>
+    <div id="massResult" style="margin-top: 1rem; font-size: 1rem;"></div>
   </div>
 </div>
 
 <script>
+  function renderLatex(targetId, content) {
+    const el = document.getElementById(targetId);
+    el.innerHTML = '';
+    const lines = content.split('<br>');
+    lines.forEach(line => {
+      const span = document.createElement('div');
+      katex.render(line, span, { throwOnError: false });
+      el.appendChild(span);
+    });
+  }
+
   async function getLuminosity() {
     const m = parseFloat(document.getElementById('massInput').value);
     const x = parseFloat(document.getElementById('hydrogenInput1').value);
@@ -66,12 +74,12 @@ nav_order: 3
     });
 
     const data = await response.json();
-    document.getElementById('luminosityResult').innerHTML =
-      `\\( \\text{Minimum log(L/L_\\odot)}: ${data.L_min.toFixed(5)} \\)<br>
-       \\( \\text{Maximum log(L/L_\\odot)}: ${data.L_max.toFixed(5)} \\)<br>
-       \\( \\text{Pure He log(L/L_\\odot)}: ${data.L_pure_He.toFixed(5)} \\)`;
+    const latex = 
+      "\\text{Minimum } \\log(L/L_\\odot):\\ " + data.L_min.toFixed(5) + "<br>" +
+      "\\text{Maximum } \\log(L/L_\\odot):\\ " + data.L_max.toFixed(5) + "<br>" +
+      "\\text{Pure He } \\log(L/L_\\odot):\\ " + data.L_pure_He.toFixed(5);
 
-    MathJax.typeset();
+    renderLatex("luminosityResult", latex);
   }
 
   async function getMass() {
@@ -86,12 +94,11 @@ nav_order: 3
     });
 
     const data = await response.json();
-    document.getElementById('massResult').innerHTML =
-      `\\( \\text{Minimum mass (M/M_\\odot)}: ${data.M_min} \\)<br>
-       \\( \\text{Maximum mass (M/M_\\odot)}: ${data.M_max} \\)<br>
-       \\( \\text{Pure He mass (M/M_\\odot)}: ${data.M_pure_He} \\)`;
+    const latex = 
+      "\\text{Minimum mass } (M/M_\\odot):\\ " + data.M_min + "<br>" +
+      "\\text{Maximum mass } (M/M_\\odot):\\ " + data.M_max + "<br>" +
+      "\\text{Pure He mass } (M/M_\\odot):\\ " + data.M_pure_He;
 
-    MathJax.typeset();
+    renderLatex("massResult", latex);
   }
 </script>
-{% endraw %}
