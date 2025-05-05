@@ -5,6 +5,11 @@ nav_order: 3
 ---
 
 {% raw %}
+<!-- Include MathJax for LaTeX rendering -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
 
   <h2 style="margin-bottom: 2rem;">
@@ -24,7 +29,7 @@ nav_order: 3
     </select>
 
     <button onclick="getLuminosity()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
-    <p id="luminosityResult" style="margin-top: 1rem; font-weight: bold; font-size: 1.5rem;"></p>
+    <p id="luminosityResult" style="margin-top: 1rem; font-size: 1rem;"></p>
   </div>
 
   <!-- Bottom Section: Mass -->
@@ -40,7 +45,7 @@ nav_order: 3
     </select>
 
     <button onclick="getMass()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
-    <p id="massResult" style="margin-top: 1rem; font-weight: bold; font-size: 1.5rem;"></p>
+    <p id="massResult" style="margin-top: 1rem; font-size: 1rem;"></p>
   </div>
 </div>
 
@@ -58,9 +63,11 @@ nav_order: 3
 
     const data = await response.json();
     document.getElementById('luminosityResult').innerHTML =
-      `<b>Minimum log(L/L_\\odot):</b> ${data.L_min.toFixed(5)}<br>
-      <b>Maximum log(L/L_\\odot):</b> ${data.L_max.toFixed(5)}<br>
-      <b>Pure He log(L/L_\\odot):</b> ${data.L_pure_He.toFixed(5)}`;
+      `\\( \\text{Minimum log(L/L_\\odot)}: \\) ${data.L_min.toFixed(5)}<br>
+       \\( \\text{Maximum log(L/L_\\odot)}: \\) ${data.L_max.toFixed(5)}<br>
+       \\( \\text{Pure He log(L/L_\\odot)}: \\) ${data.L_pure_He.toFixed(5)}`;
+
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'luminosityResult']);
   }
 
   async function getMass() {
@@ -76,9 +83,11 @@ nav_order: 3
 
     const data = await response.json();
     document.getElementById('massResult').innerHTML =
-      `<b>Minimum mass (M/M_\\odot):</b> ${data.M_min}<br>
-      <b>Maximum mass (M/M_\\odot):</b> ${data.M_max}<br>
-      <b>Pure He mass (M/M_\\odot):</b> ${data.M_pure_He}`;
+      `\\( \\text{Minimum mass (M/M_\\odot)}: \\) ${data.M_min}<br>
+       \\( \\text{Maximum mass (M/M_\\odot)}: \\) ${data.M_max}<br>
+       \\( \\text{Pure He mass (M/M_\\odot)}: \\) ${data.M_pure_He}`;
+
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'massResult']);
   }
 </script>
 {% endraw %}
