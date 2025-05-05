@@ -1,34 +1,29 @@
 ---
 layout: default
-title: Minimum, maximum and pure-He Mass-Luminosity Calculator
+title: Mass-Luminosity Calculator
 ---
 
 <style>
   body {
     padding: 20px;
-    text-align: center; /* Centers the content */
+    text-align: center;
   }
 
-  h1 {
-    text-align: center; /* Ensures title is centered */
-    margin-bottom: 20px;
-  }
-
-  h2, p, label {
+  h1, h2, p, label {
     margin-bottom: 15px;
   }
 
   #luminosity-form {
-    display: inline-block;
-    text-align: left; /* Aligns form elements to the left but keeps form centered */
     margin-bottom: 20px;
+    display: inline-block;
+    text-align: left;
   }
 
   input, button {
     margin-top: 5px;
-    margin-bottom: 10px;
-    display: block;
-    width: 100%; /* Makes the inputs and button wider */
+    width: 200px; /* Set a fixed width for the input boxes */
+    padding: 5px;
+    text-align: center;
   }
 
   #luminosity-output {
@@ -36,13 +31,16 @@ title: Minimum, maximum and pure-He Mass-Luminosity Calculator
     border: 1px solid #ccc;
     margin-top: 20px;
     background-color: #f9f9f9;
-    display: inline-block;
-    text-align: left; /* Keeps results left-aligned but centered */
-    width: 80%;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>
 
-# Calculate Min, Max, and Pure He Luminosity for Given Mass (M), Hydrogen Mass Fraction (X), and Metal Mass Fraction (Z)
+# Mass-Luminosity Calculator
+
+### Input Parameters
+Enter the values for **Mass (M)**, **Hydrogen Mass Fraction (X)**, and **Metallicity (Z)** to calculate the luminosity.
 
 <form id="luminosity-form">
     <label for="m">Mass (M):</label>
