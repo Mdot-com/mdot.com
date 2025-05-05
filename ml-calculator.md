@@ -63,19 +63,30 @@ nav_order: 3
       return alert("Please fill in all fields with valid numbers.");
     }
 
-    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode: "luminosity", m, x, Z })
-    });
+    try {
+      const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "luminosity", m, x, Z })
+      });
 
-    const data = await response.json();
-    const latex = 
-      "\\text{Minimum } \\log(L/L_\\odot):\\ " + data.L_min.toFixed(5) + "<br>" +
-      "\\text{Maximum } \\log(L/L_\\odot):\\ " + data.L_max.toFixed(5) + "<br>" +
-      "\\text{Pure He } \\log(L/L_\\odot):\\ " + data.L_pure_He.toFixed(5);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    renderLatex("luminosityResult", latex);
+      const data = await response.json();
+      console.log("Luminosity data:", data);  // Debugging line
+
+      const latex = 
+        "\\text{Minimum } \\log(L/L_\\odot):\\ " + data.L_min.toFixed(5) + "<br>" +
+        "\\text{Maximum } \\log(L/L_\\odot):\\ " + data.L_max.toFixed(5) + "<br>" +
+        "\\text{Pure He } \\log(L/L_\\odot):\\ " + data.L_pure_He.toFixed(5);
+
+      renderLatex("luminosityResult", latex);
+    } catch (error) {
+      console.error("Error:", error);  // Debugging line
+      alert("Error: " + error.message);
+    }
   }
 
   async function getMass() {
@@ -87,18 +98,29 @@ nav_order: 3
       return alert("Please fill in all fields with valid numbers.");
     }
 
-    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode: "mass", L, x, Z })
-    });
+    try {
+      const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "mass", L, x, Z })
+      });
 
-    const data = await response.json();
-    const latex = 
-      "\\text{Minimum mass } (M/M_\\odot):\\ " + data.M_min + "<br>" +
-      "\\text{Maximum mass } (M/M_\\odot):\\ " + data.M_max + "<br>" +
-      "\\text{Pure He mass } (M/M_\\odot):\\ " + data.M_pure_He;
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    renderLatex("massResult", latex);
+      const data = await response.json();
+      console.log("Mass data:", data);  // Debugging line
+
+      const latex = 
+        "\\text{Minimum mass } (M/M_\\odot):\\ " + data.M_min + "<br>" +
+        "\\text{Maximum mass } (M/M_\\odot):\\ " + data.M_max + "<br>" +
+        "\\text{Pure He mass } (M/M_\\odot):\\ " + data.M_pure_He;
+
+      renderLatex("massResult", latex);
+    } catch (error) {
+      console.error("Error:", error);  // Debugging line
+      alert("Error: " + error.message);
+    }
   }
 </script>
