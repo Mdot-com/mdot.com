@@ -69,8 +69,6 @@ async function getLuminosity() {
     return;
   }
 
-  console.log(`Making API call with: m = ${m}, x = ${x}, Z = ${Z}`);  // Debugging line
-
   const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -78,8 +76,6 @@ async function getLuminosity() {
   });
 
   const data = await response.json();
-
-  console.log("API Response:", data);  // Debugging line
 
   if (data.error) {
     alert(`Error: ${data.error}`);
