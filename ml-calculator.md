@@ -7,7 +7,57 @@ nav_order: 3
 {% raw %}
 <!-- Include MathJax for LaTeX rendering -->
 <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  src="https://cdn.jsdelivr.net/npm/mathjax@2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script>
+  window.onload = () => {
+    // This will ensure that MathJax processes everything when the page is loaded
+    MathJax.Hub.Config({
+      tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      "HTML-CSS": { linebreaks: { automatic: true } }
+    });
+  };
+
+  async function getLuminosity() {
+    const m = parseFloat(document.getElementById('massInput').value);
+    const x = parseFloat(document.getElementById('hydrogenInput1').value);
+    const use_smc = document.getElementById('smcDropdown1').value === "true";
+
+    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "luminosity", m, x, use_smc })
+    });
+
+    const data = await response.json();
+    document.getElementById('luminosityResult').innerHTML =
+      `\\( \\text{Minimum log(L/L_\\odot)}: \\) ${data.L_min.toFixed(5)}<br>
+       \\( \\text{Maximum log(L/L_\\odot)}: \\) ${data.L_max.toFixed(5)}<br>
+       \\( \\text{Pure He log(L/L_\\odot)}: \\) ${data.L_pure_He.toFixed(5)}`;
+
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'luminosityResult']);
+  }
+
+  async function getMass() {
+    const L = parseFloat(document.getElementById('luminosityInput').value);
+    const x = parseFloat(document.getElementById('hydrogenInput2').value);
+    const use_smc = document.getElementById('smcDropdown2').value === "true";
+
+    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "mass", L, x, use_smc })
+    });
+
+    const data = await response.json();
+    document.getElementById('massResult').innerHTML =
+      `\\( \\text{Minimum mass (M/M_\\odot)}: \\) ${data.M_min}<br>
+       \\( \\text{Maximum mass (M/M_\\odot)}: \\) ${data.M_max}<br>
+       \\( \\text{Pure He mass (M/M_\\odot)}: \\) ${data.M_pure_He}`;
+
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'massResult']);
+  }
 </script>
 
 <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
@@ -49,45 +99,4 @@ nav_order: 3
   </div>
 </div>
 
-<script>
-  async function getLuminosity() {
-    const m = parseFloat(document.getElementById('massInput').value);
-    const x = parseFloat(document.getElementById('hydrogenInput1').value);
-    const use_smc = document.getElementById('smcDropdown1').value === "true";
-
-    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode: "luminosity", m, x, use_smc })
-    });
-
-    const data = await response.json();
-    document.getElementById('luminosityResult').innerHTML =
-      `\\( \\text{Minimum log(L/L_\\odot)}: \\) ${data.L_min.toFixed(5)}<br>
-       \\( \\text{Maximum log(L/L_\\odot)}: \\) ${data.L_max.toFixed(5)}<br>
-       \\( \\text{Pure He log(L/L_\\odot)}: \\) ${data.L_pure_He.toFixed(5)}`;
-
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'luminosityResult']);
-  }
-
-  async function getMass() {
-    const L = parseFloat(document.getElementById('luminosityInput').value);
-    const x = parseFloat(document.getElementById('hydrogenInput2').value);
-    const use_smc = document.getElementById('smcDropdown2').value === "true";
-
-    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode: "mass", L, x, use_smc })
-    });
-
-    const data = await response.json();
-    document.getElementById('massResult').innerHTML =
-      `\\( \\text{Minimum mass (M/M_\\odot)}: \\) ${data.M_min}<br>
-       \\( \\text{Maximum mass (M/M_\\odot)}: \\) ${data.M_max}<br>
-       \\( \\text{Pure He mass (M/M_\\odot)}: \\) ${data.M_pure_He}`;
-
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'massResult']);
-  }
-</script>
 {% endraw %}
