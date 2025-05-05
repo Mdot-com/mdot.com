@@ -8,7 +8,7 @@ nav_order: 3
 <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
 
   <h2 style="margin-bottom: 2rem;">
-    Minimum, maximum and pure He mass-luminosity relation
+    Minimum, maximum and pure He mass-luminosity relations
   </h2>
 
   <!-- Top Section: Luminosity -->
@@ -24,7 +24,7 @@ nav_order: 3
     </select>
 
     <button onclick="getLuminosity()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
-    <p id="luminosityResult" style="margin-top: 1rem; font-weight: bold;"></p>
+    <p id="luminosityResult" style="margin-top: 1rem; font-weight: bold; font-size: 1.5rem;"></p>
   </div>
 
   <!-- Bottom Section: Mass -->
@@ -40,7 +40,7 @@ nav_order: 3
     </select>
 
     <button onclick="getMass()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
-    <p id="massResult" style="margin-top: 1rem; font-weight: bold;"></p>
+    <p id="massResult" style="margin-top: 1rem; font-weight: bold; font-size: 1.5rem;"></p>
   </div>
 </div>
 
@@ -57,8 +57,10 @@ nav_order: 3
     });
 
     const data = await response.json();
-    document.getElementById('luminosityResult').innerText =
-      `L_min: ${data.L_min?.toFixed(5)}, L_max: ${data.L_max?.toFixed(5)}, Pure He L: ${data.L_pure_He?.toFixed(5)}`;
+    document.getElementById('luminosityResult').innerHTML =
+      `<b>Minimum log(L/L_\\odot):</b> ${data.L_min.toFixed(5)}<br>
+      <b>Maximum log(L/L_\\odot):</b> ${data.L_max.toFixed(5)}<br>
+      <b>Pure He log(L/L_\\odot):</b> ${data.L_pure_He.toFixed(5)}`;
   }
 
   async function getMass() {
@@ -73,8 +75,10 @@ nav_order: 3
     });
 
     const data = await response.json();
-    document.getElementById('massResult').innerText =
-      `M_min: ${data.M_min}, M_max: ${data.M_max}, Pure He M: ${data.M_pure_He}`;
+    document.getElementById('massResult').innerHTML =
+      `<b>Minimum mass (M/M_\\odot):</b> ${data.M_min}<br>
+      <b>Maximum mass (M/M_\\odot):</b> ${data.M_max}<br>
+      <b>Pure He mass (M/M_\\odot):</b> ${data.M_pure_He}`;
   }
 </script>
 {% endraw %}
