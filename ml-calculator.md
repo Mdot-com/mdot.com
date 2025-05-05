@@ -50,7 +50,7 @@ nav_order: 3
     const x = parseFloat(document.getElementById('hydrogenInput1').value);
     const use_smc = document.getElementById('smcDropdown1').value === "true";
 
-    const response = await fetch("https://hkxx28fqq4.execute-api.eu-north-1.amazonaws.com/add", {
+    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mode: "luminosity", m, x, use_smc })
