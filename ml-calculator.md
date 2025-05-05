@@ -59,36 +59,41 @@ nav_order: 3
   }
 
   // Function to compute luminosity based on mass, hydrogen, and metallicity
-  async function getLuminosity() {
-    const m = parseFloat(document.getElementById('massInput').value);
-    const x = parseFloat(document.getElementById('hydrogenInput1').value);
-    const Z = parseFloat(document.getElementById('ZInput1').value);
+async function getLuminosity() {
+  const m = parseFloat(document.getElementById('massInput').value);
+  const x = parseFloat(document.getElementById('hydrogenInput1').value);
+  const Z = parseFloat(document.getElementById('ZInput1').value);
 
-    if (isNaN(Z)) {
-      alert("Please enter a valid Metallicity (Z) value.");
-      return;
-    }
-
-    const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ choice: "1", m, x, Z })
-    });
-
-    const data = await response.json();
-
-    if (data.error) {
-      alert(`Error: ${data.error}`);
-      return;
-    }
-
-    const latex = 
-      "\\text{Minimum } \\log(L/L_\\odot):\\ " + data.L_min.toFixed(5) + "<br>" +
-      "\\text{Maximum } \\log(L/L_\\odot):\\ " + data.L_max.toFixed(5) + "<br>" +
-      "\\text{Pure He } \\log(L/L_\\odot):\\ " + data.Pure_He_Luminosity.toFixed(5);
-
-    renderLatex("luminosityResult", latex);
+  if (isNaN(Z)) {
+    alert("Please enter a valid Metallicity (Z) value.");
+    return;
   }
+
+  console.log(`Making API call with: m = ${m}, x = ${x}, Z = ${Z}`);  // Debugging line
+
+  const response = await fetch("https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ choice: "1", m, x, Z })
+  });
+
+  const data = await response.json();
+
+  console.log("API Response:", data);  // Debugging line
+
+  if (data.error) {
+    alert(`Error: ${data.error}`);
+    return;
+  }
+
+  const latex = 
+    "\\text{Minimum } \\log(L/L_\\odot):\\ " + data.L_min.toFixed(5) + "<br>" +
+    "\\text{Maximum } \\log(L/L_\\odot):\\ " + data.L_max.toFixed(5) + "<br>" +
+    "\\text{Pure He } \\log(L/L_\\odot):\\ " + data.Pure_He_Luminosity.toFixed(5);
+
+  renderLatex("luminosityResult", latex);
+}
+
 
   // Function to compute mass based on luminosity, hydrogen, and metallicity
   async function getMass() {
