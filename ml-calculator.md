@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Mass-Luminosity Calculator
+title: Minimum, maximum and pure-He Mass-Luminosity Calculator
 ---
 
 <style>
@@ -28,10 +28,8 @@ title: Mass-Luminosity Calculator
   }
 </style>
 
-# Mass-Luminosity Calculator
+# Calculate Min, Max, and Pure He Luminosity for Given Mass (M), Hydrogen Mass Fraction (X), and Metal Mass Fraction (Z)
 
-### Input Parameters
-Enter the values for **Mass (M)**, **Hydrogen Mass Fraction (X)**, and **Metallicity (Z)** to calculate the luminosity.
 
 <form id="luminosity-form">
     <label for="m">Mass (M):</label>
