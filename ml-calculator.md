@@ -5,10 +5,14 @@ nav_order: 3
 ---
 
 {% raw %}
-<!-- Use MathJax v2 for LaTeX rendering -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
+<!-- Load MathJax v3 -->
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(', '\\)']] },
+    svg: { fontCache: 'global' }
+  };
 </script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
 <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
 
@@ -21,7 +25,7 @@ nav_order: 3
     <h3>Compute Luminosity from Mass</h3>
     <input type="number" id="massInput" placeholder="Mass (M)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput1" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
-    
+
     <label for="smcDropdown1">Select Metallicity:</label>
     <select id="smcDropdown1" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
       <option value="false">LMC</option>
@@ -37,7 +41,7 @@ nav_order: 3
     <h3>Compute Mass from Luminosity</h3>
     <input type="number" id="luminosityInput" placeholder="Luminosity (L)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
     <input type="number" id="hydrogenInput2" placeholder="Hydrogen (X)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
-    
+
     <label for="smcDropdown2">Select Metallicity:</label>
     <select id="smcDropdown2" style="width: 100%; padding: 0.5rem; margin-top: 1rem;">
       <option value="false">LMC</option>
@@ -63,11 +67,11 @@ nav_order: 3
 
     const data = await response.json();
     document.getElementById('luminosityResult').innerHTML =
-      '\\( \\text{Minimum log(L/L_\\odot)}: \\) ' + data.L_min.toFixed(5) + '<br>' +
-      '\\( \\text{Maximum log(L/L_\\odot)}: \\) ' + data.L_max.toFixed(5) + '<br>' +
-      '\\( \\text{Pure He log(L/L_\\odot)}: \\) ' + data.L_pure_He.toFixed(5);
+      `\\( \\text{Minimum log(L/L_\\odot)}: ${data.L_min.toFixed(5)} \\)<br>
+       \\( \\text{Maximum log(L/L_\\odot)}: ${data.L_max.toFixed(5)} \\)<br>
+       \\( \\text{Pure He log(L/L_\\odot)}: ${data.L_pure_He.toFixed(5)} \\)`;
 
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'luminosityResult']);
+    MathJax.typeset();
   }
 
   async function getMass() {
@@ -83,11 +87,11 @@ nav_order: 3
 
     const data = await response.json();
     document.getElementById('massResult').innerHTML =
-      '\\( \\text{Minimum mass (M/M_\\odot)}: \\) ' + data.M_min + '<br>' +
-      '\\( \\text{Maximum mass (M/M_\\odot)}: \\) ' + data.M_max + '<br>' +
-      '\\( \\text{Pure He mass (M/M_\\odot)}: \\) ' + data.M_pure_He;
+      `\\( \\text{Minimum mass (M/M_\\odot)}: ${data.M_min} \\)<br>
+       \\( \\text{Maximum mass (M/M_\\odot)}: ${data.M_max} \\)<br>
+       \\( \\text{Pure He mass (M/M_\\odot)}: ${data.M_pure_He} \\)`;
 
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'massResult']);
+    MathJax.typeset();
   }
 </script>
 {% endraw %}
