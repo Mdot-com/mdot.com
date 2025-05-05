@@ -5,9 +5,9 @@ nav_order: 3
 ---
 
 {% raw %}
-<!-- Include MathJax for LaTeX rendering -->
+<!-- Use MathJax v2 for LaTeX rendering -->
 <script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
@@ -90,5 +90,4 @@ nav_order: 3
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'massResult']);
   }
 </script>
-
 {% endraw %}
