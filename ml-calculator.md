@@ -3,6 +3,31 @@ layout: default
 title: Mass-Luminosity Calculator
 ---
 
+<style>
+  body {
+    padding: 20px;
+  }
+
+  h1, h2, p, label {
+    margin-bottom: 15px;
+  }
+
+  #luminosity-form {
+    margin-bottom: 20px;
+  }
+
+  input, button {
+    margin-top: 5px;
+  }
+
+  #luminosity-output {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+  }
+</style>
+
 # Mass-Luminosity Calculator
 
 ### Input Parameters
