@@ -63,9 +63,9 @@ nav_order: 3
 
     const data = await response.json();
     document.getElementById('luminosityResult').innerHTML =
-      `\\( \\text{Minimum log(L/L_\\odot)}: \\) ${data.L_min.toFixed(5)}<br>
-       \\( \\text{Maximum log(L/L_\\odot)}: \\) ${data.L_max.toFixed(5)}<br>
-       \\( \\text{Pure He log(L/L_\\odot)}: \\) ${data.L_pure_He.toFixed(5)}`;
+      '\\( \\text{Minimum log(L/L_\\odot)}: \\) ' + data.L_min.toFixed(5) + '<br>' +
+      '\\( \\text{Maximum log(L/L_\\odot)}: \\) ' + data.L_max.toFixed(5) + '<br>' +
+      '\\( \\text{Pure He log(L/L_\\odot)}: \\) ' + data.L_pure_He.toFixed(5);
 
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'luminosityResult']);
   }
@@ -83,9 +83,9 @@ nav_order: 3
 
     const data = await response.json();
     document.getElementById('massResult').innerHTML =
-      `\\( \\text{Minimum mass (M/M_\\odot)}: \\) ${data.M_min}<br>
-       \\( \\text{Maximum mass (M/M_\\odot)}: \\) ${data.M_max}<br>
-       \\( \\text{Pure He mass (M/M_\\odot)}: \\) ${data.M_pure_He}`;
+      '\\( \\text{Minimum mass (M/M_\\odot)}: \\) ' + data.M_min + '<br>' +
+      '\\( \\text{Maximum mass (M/M_\\odot)}: \\) ' + data.M_max + '<br>' +
+      '\\( \\text{Pure He mass (M/M_\\odot)}: \\) ' + data.M_pure_He;
 
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'massResult']);
   }
