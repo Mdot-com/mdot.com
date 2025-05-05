@@ -8,7 +8,7 @@ nav_order: 3
 <div style="max-width: 600px; margin: 2rem auto; padding: 1rem; text-align: center;">
 
   <h2 style="margin-bottom: 2rem;">
-    Minimum, maximum and pure He mass-luminosity relations
+    Minimum, maximum and pure He mass-luminosity relation
   </h2>
 
   <!-- Top Section: Luminosity -->
