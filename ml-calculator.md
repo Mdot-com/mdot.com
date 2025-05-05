@@ -26,7 +26,7 @@ nav_order: 3
     <label for="ZInput1">Enter Metallicity (Z):</label>
     <input type="number" id="ZInput1" placeholder="Metallicity (Z)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;" step="0.001" min="0.001" max="0.01">
 
-    <button onclick="getLuminosity()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
+    <button id="computeLuminosityBtn" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Luminosity</button>
     <div id="luminosityResult" style="margin-top: 1rem; font-size: 1rem;"></div>
   </div>
 
@@ -39,11 +39,12 @@ nav_order: 3
     <label for="ZInput2">Enter Metallicity (Z):</label>
     <input type="number" id="ZInput2" placeholder="Metallicity (Z)" style="width: 100%; padding: 0.5rem; margin-top: 1rem;" step="0.001" min="0.001" max="0.01">
 
-    <button onclick="getMass()" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
+    <button id="computeMassBtn" style="width: 100%; margin-top: 1rem; padding: 0.5rem;">Compute Mass</button>
     <div id="massResult" style="margin-top: 1rem; font-size: 1rem;"></div>
   </div>
 </div>
 
+<!-- JavaScript placed after body content to ensure DOM is fully loaded -->
 <script>
   // Function to render latex in the result div
   function renderLatex(targetId, content) {
@@ -120,4 +121,8 @@ nav_order: 3
 
     renderLatex("massResult", latex);
   }
+
+  // Event listeners to trigger the respective functions
+  document.getElementById('computeLuminosityBtn').addEventListener('click', getLuminosity);
+  document.getElementById('computeMassBtn').addEventListener('click', getMass);
 </script>
