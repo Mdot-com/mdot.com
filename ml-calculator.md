@@ -1,4 +1,6 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 
 <script>
   async function getLuminosity() {
@@ -19,7 +21,7 @@
       Pure He log(L/L_\\odot): ${data.L_pure_He.toFixed(5)}
     `;
     document.getElementById('luminosityResult').innerHTML = resultText;
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'luminosityResult']);
+    MathJax.typeset();
   }
 
   async function getMass() {
@@ -40,6 +42,6 @@
       Pure He Mass: ${data.M_pure_He.toFixed(5)}
     `;
     document.getElementById('massResult').innerHTML = resultText;
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, 'massResult']);
+    MathJax.typeset();
   }
 </script>
