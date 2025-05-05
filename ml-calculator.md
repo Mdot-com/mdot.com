@@ -5,90 +5,84 @@ title: Mass–Luminosity Calculator
 
 # Mass–Luminosity Calculator
 
-Welcome to the **ML Calculator**! This tool allows you to input values for **Mass (M)**, **Luminosity (L)**, **Helium abundance (X)**, and **Metallicity (Z)**, and it will calculate the corresponding **Luminosity (L)** or **Mass (M)** based on the chosen option.
+Welcome to the **ML Calculator**! You can calculate either the **Luminosity (L)** from the star's **Mass (M)** or the **Masses (M)** from the star's **Luminosity (L)**.
 
-## Inputs
+## Top Rectangle: Calculate Luminosity (L)
 
-Please select the appropriate option below and provide the necessary values:
+Please input the following values to calculate the **Luminosity (L)**:
 
-### Choice 1: Luminosity Calculation (L)
-- **Mass (M)**: The mass of the star.
-- **Helium abundance (X)**: The helium abundance in the star.
-- **Metallicity (Z)**: The metallicity in the star.
+<form id="luminosity-form">
+    <div style="border: 1px solid #ccc; padding: 20px; margin-bottom: 20px;">
+        <h3>Calculate Luminosity (L)</h3>
+        
+        <label for="m_top">Mass (M):</label>
+        <input type="number" id="m_top" name="m_top" step="any" required>
+        <br><br>
 
-### Choice 2: Mass Calculation (M)
-- **Luminosity (L)**: The luminosity of the star.
-- **Helium abundance (X)**: The helium abundance in the star.
-- **Metallicity (Z)**: The metallicity in the star.
+        <label for="x_top">Hydrogen Mass Fraction (X):</label>
+        <input type="number" id="x_top" name="x_top" step="any" required>
+        <br><br>
 
-## Form for Calculation
+        <label for="z_top">Metallicity (Z):</label>
+        <input type="number" id="z_top" name="z_top" step="any" required>
+        <br><br>
 
-<form id="calculator-form">
-    <label for="choice">Choice:</label>
-    <select id="choice" name="choice">
-        <option value="1">Luminosity Calculation (L)</option>
-        <option value="2">Mass Calculation (M)</option>
-    </select>
-    <br><br>
-
-    <label for="m">Mass (M):</label>
-    <input type="number" id="m" name="m" step="any">
-    <br><br>
-
-    <label for="l">Luminosity (L):</label>
-    <input type="number" id="l" name="l" step="any">
-    <br><br>
-
-    <label for="x">Helium abundance (X):</label>
-    <input type="number" id="x" name="x" step="any">
-    <br><br>
-
-    <label for="z">Metallicity (Z):</label>
-    <input type="number" id="z" name="z" step="any">
-    <br><br>
-
-    <button type="button" onclick="calculate()">Calculate</button>
+        <button type="button" onclick="calculateLuminosity()">Calculate Luminosity (L)</button>
+    </div>
 </form>
 
-## Results
+### Results for Luminosity Calculation:
+<div id="luminosity-output">
+    <p>Results will appear here.</p>
+</div>
 
-<div id="output">
+## Bottom Rectangle: Calculate Masses (M)
+
+Please input the following values to calculate **Masses (M)**:
+
+<form id="mass-form">
+    <div style="border: 1px solid #ccc; padding: 20px;">
+        <h3>Calculate Masses (M)</h3>
+
+        <label for="l_bottom">Luminosity (L):</label>
+        <input type="number" id="l_bottom" name="l_bottom" step="any" required>
+        <br><br>
+
+        <label for="x_bottom">Hydrogen Mass Fraction (X):</label>
+        <input type="number" id="x_bottom" name="x_bottom" step="any" required>
+        <br><br>
+
+        <label for="z_bottom">Metallicity (Z):</label>
+        <input type="number" id="z_bottom" name="z_bottom" step="any" required>
+        <br><br>
+
+        <button type="button" onclick="calculateMasses()">Calculate Masses (M)</button>
+    </div>
+</form>
+
+### Results for Mass Calculation:
+<div id="mass-output">
     <p>Results will appear here.</p>
 </div>
 
 <script>
-    function calculate() {
-        const choice = document.getElementById('choice').value;
-        const m = parseFloat(document.getElementById('m').value);
-        const l = parseFloat(document.getElementById('l').value);
-        const x = parseFloat(document.getElementById('x').value);
-        const z = parseFloat(document.getElementById('z').value);
+    // Function to calculate Luminosity (L)
+    function calculateLuminosity() {
+        const m = parseFloat(document.getElementById('m_top').value);
+        const x = parseFloat(document.getElementById('x_top').value);
+        const z = parseFloat(document.getElementById('z_top').value);
 
-        let data = {};
-
-        if (choice === '1') {
-            if (!m || !x || !z) {
-                alert('Please enter Mass (M), Helium abundance (X), and Metallicity (Z) for Luminosity calculation.');
-                return;
-            }
-            data = {
-                "choice": "1",
-                "Z": z,
-                "m": m,
-                "x": x
-            };
-        } else if (choice === '2') {
-            if (!l || !x || !z) {
-                alert('Please enter Luminosity (L), Helium abundance (X), and Metallicity (Z) for Mass calculation.');
-                return;
-            }
-            data = {
-                "choice": "2",
-                "Z": z,
-                "L": l,
-                "x": x
-            };
+        if (!m || !x || !z) {
+            alert('Please enter Mass (M), Hydrogen Mass Fraction (X), and Metallicity (Z).');
+            return;
         }
+
+        const data = {
+            "choice": "1",
+            "Z": z,
+            "m": m,
+            "x": x
+        };
 
         fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
             method: 'POST',
@@ -99,23 +93,54 @@ Please select the appropriate option below and provide the necessary values:
         })
         .then(response => response.json())
         .then(data => {
-            let output = document.getElementById('output');
-            if (choice === '1') {
-                output.innerHTML = `
-                    <p><strong>L_min:</strong> ${data.L_min}</p>
-                    <p><strong>L_max:</strong> ${data.L_max}</p>
-                    <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
-                `;
-            } else if (choice === '2') {
-                output.innerHTML = `
-                    <p><strong>M_min:</strong> ${data.M_min}</p>
-                    <p><strong>M_max:</strong> ${data.M_max}</p>
-                    <p><strong>Pure_He_Mass:</strong> ${data.Pure_He_Mass}</p>
-                `;
-            }
+            let output = document.getElementById('luminosity-output');
+            output.innerHTML = `
+                <p><strong>L_min:</strong> ${data.L_min}</p>
+                <p><strong>L_max:</strong> ${data.L_max}</p>
+                <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
+            `;
         })
         .catch(error => {
-            document.getElementById('output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+            document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+        });
+    }
+
+    // Function to calculate Masses (M)
+    function calculateMasses() {
+        const l = parseFloat(document.getElementById('l_bottom').value);
+        const x = parseFloat(document.getElementById('x_bottom').value);
+        const z = parseFloat(document.getElementById('z_bottom').value);
+
+        if (!l || !x || !z) {
+            alert('Please enter Luminosity (L), Hydrogen Mass Fraction (X), and Metallicity (Z).');
+            return;
+        }
+
+        const data = {
+            "choice": "2",
+            "Z": z,
+            "L": l,
+            "x": x
+        };
+
+        fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            let output = document.getElementById('mass-output');
+            output.innerHTML = `
+                <p><strong>M_min:</strong> ${data.M_min}</p>
+                <p><strong>M_max:</strong> ${data.M_max}</p>
+                <p><strong>Pure_He_Mass:</strong> ${data.Pure_He_Mass}</p>
+            `;
+        })
+        .catch(error => {
+            document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
         });
     }
 </script>
