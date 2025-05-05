@@ -45,6 +45,7 @@ nav_order: 3
 </div>
 
 <script>
+  // Function to render latex in the result div
   function renderLatex(targetId, content) {
     const el = document.getElementById(targetId);
     el.innerHTML = '';
@@ -56,10 +57,11 @@ nav_order: 3
     });
   }
 
+  // Function to compute luminosity based on mass, hydrogen, and metallicity
   async function getLuminosity() {
     const m = parseFloat(document.getElementById('massInput').value);
     const x = parseFloat(document.getElementById('hydrogenInput1').value);
-    const Z = parseFloat(document.getElementById('ZInput1').value);  // Correctly read Z value
+    const Z = parseFloat(document.getElementById('ZInput1').value);
 
     if (isNaN(Z)) {
       alert("Please enter a valid Metallicity (Z) value.");
@@ -87,10 +89,11 @@ nav_order: 3
     renderLatex("luminosityResult", latex);
   }
 
+  // Function to compute mass based on luminosity, hydrogen, and metallicity
   async function getMass() {
     const L = parseFloat(document.getElementById('luminosityInput').value);
     const x = parseFloat(document.getElementById('hydrogenInput2').value);
-    const Z = parseFloat(document.getElementById('ZInput2').value);  // Correctly read Z value
+    const Z = parseFloat(document.getElementById('ZInput2').value);
 
     if (isNaN(Z)) {
       alert("Please enter a valid Metallicity (Z) value.");
