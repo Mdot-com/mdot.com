@@ -78,7 +78,7 @@ title: Mass-Luminosity Calculator
 
 <div style="display: flex; justify-content: center; align-items: flex-start; margin: 30px; gap: 40px;">
   <!-- Left Box -->
-  <div style="width: 450px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
+  <div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
     <div style="display: flex; flex-direction: column; align-items: center;">
       <h2 style="text-align: center; margin-bottom: 20px;">Luminosity Calculator</h2>
       <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
@@ -94,7 +94,7 @@ title: Mass-Luminosity Calculator
   </div>
 
   <!-- Right Box -->
-  <div style="width: 450px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
+  <div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
     <div style="text-align: justify;">
       <h2 style="text-align: center;">How to Use</h2>
       <p style="font-size: 1.05em;">Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
