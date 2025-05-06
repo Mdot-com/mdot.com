@@ -113,6 +113,69 @@ title: Mass-Luminosity Calculator
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+
+<script>
+    document.getElementById('calculate-luminosity').addEventListener('click', function() {
+        const m = parseFloat(document.getElementById('m').value);
+        const x = parseFloat(document.getElementById('x').value);
+        const z = parseFloat(document.getElementById('z').value);
+
+        if (!m || !z) {
+            alert('Please enter Mass (M) and Metallicity (Z).');
+            return;
+        }
+
+        const data = {
+            "choice": "1",
+            "Z": z,
+            "m": m,
+            "x": x
+        };
+
+        fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            const output = document.getElementById('luminosity-output');
+
+            // If X = 0, only output Pure_He_Luminosity
+            if (x === 0 && data.Pure_He_Luminosity) {
+                output.innerHTML = `
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
+                        log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
+                    </p>
+                `;
+            } else if (data.Pure_He_Luminosity) {
+                output.innerHTML = `
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
+                        log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}
+                    </p>
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
+                        log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}
+                    </p>
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
+                        log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
+                    </p>
+                `;
+            } else {
+                output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+            }
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
+        })
+        .catch(error => {
+            document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+        });
+    });
+</script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
