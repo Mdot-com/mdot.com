@@ -62,11 +62,11 @@ title: Mass-Luminosity Calculator
 
 <div style="display: flex; justify-content: center; gap: 30px; margin: 30px 0;">
   <div style="text-align: center;">
-    <img src="https://gautham-sabhahit.github.io/images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 500px; border: 1px solid #ccc; padding: 5px;">
+    <img src="https://gautham-sabhahit.github.io/images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 520px; border: 1px solid #ccc; padding: 5px;">
     <p><em>Figure 1:</em> Luminosity stratification of a \( 5 \, M_\odot \) model with a \( 4 \, M_\odot \) He core and \( 1 \, M_\odot \) H shell.</p>
   </div>
   <div style="text-align: center;">
-    <img src="https://gautham-sabhahit.github.io/images/max_s_max_L_M5.0.png" alt="Figure 2" style="max-width: 100%; width: 500px; border: 1px solid #ccc; padding: 5px;">
+    <img src="https://gautham-sabhahit.github.io/images/max_s_max_L_M5.0.png" alt="Figure 2" style="max-width: 100%; width: 520px; border: 1px solid #ccc; padding: 5px;">
     <p><em>Figure 2:</em> Nuclear energy generation rate showing dual burning regions in the same model.</p>
   </div>
 </div>
@@ -81,20 +81,11 @@ title: Mass-Luminosity Calculator
   <!-- Left Half: Calculator -->
   <div style="flex: 1; padding-right: 20px;">
     <h2>Luminosity Calculator</h2>
-    <form id="luminosity-form">
-        <label for="m">Mass (M):</label>
-        <input type="number" id="m" name="m" step="any" required>
-        <br><br>
-
-        <label for="x">Hydrogen Mass Fraction (X):</label>
-        <input type="number" id="x" name="x" step="any" required>
-        <br><br>
-
-        <label for="z">Metallicity (Z):</label>
-        <input type="number" id="z" name="z" step="any" required>
-        <br><br>
-
-        <button type="button" id="calculate-luminosity">Calculate Luminosity</button>
+    <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
+        <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px;">
+        <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px;">
+        <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px;">
+        <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px;">Calculate Luminosity</button>
     </form>
 
     <div id="luminosity-output" style="margin-top: 20px;">
@@ -110,6 +101,7 @@ title: Mass-Luminosity Calculator
     <p>Once you press the button, the results will be displayed below the calculator. If there are any issues with the input or the calculation, an error message will appear.</p>
   </div>
 </div>
+
 
 <script>
     document.getElementById('calculate-luminosity').addEventListener('click', function() {
