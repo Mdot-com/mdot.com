@@ -62,11 +62,11 @@ title: Mass-Luminosity Calculator
 
 <div style="display: flex; justify-content: center; gap: 30px; margin: 30px 0;">
   <div style="text-align: center;">
-    <img src="https://gautham-sabhahit.github.io/images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 520px; border: 1px solid #ccc; padding: 5px;">
+    <img src="https://gautham-sabhahit.github.io/images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 550px; border: 1px solid #ccc; padding: 5px;">
     <p><em>Figure 1:</em> Luminosity stratification of a \( 5 \, M_\odot \) model with a \( 4 \, M_\odot \) He core and \( 1 \, M_\odot \) H shell.</p>
   </div>
   <div style="text-align: center;">
-    <img src="https://gautham-sabhahit.github.io/images/max_s_max_L_M5.0.png" alt="Figure 2" style="max-width: 100%; width: 520px; border: 1px solid #ccc; padding: 5px;">
+    <img src="https://gautham-sabhahit.github.io/images/max_s_max_L_M5.0.png" alt="Figure 2" style="max-width: 100%; width: 550px; border: 1px solid #ccc; padding: 5px;">
     <p><em>Figure 2:</em> Nuclear energy generation rate showing dual burning regions in the same model.</p>
   </div>
 </div>
@@ -93,19 +93,17 @@ title: Mass-Luminosity Calculator
     </div>
   </div>
 
-  <!-- Right Box -->
-  <div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
-    <div style="text-align: justify;">
-      <h2 style="text-align: center;">How to Use</h2>
-<p>Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
+<div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
+  <div style="text-align: justify;">
+    <h2 style="text-align: center; font-size: 2em;">How to Use</h2>
+    <p style="font-size: 1.2em;">Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
 
-<p><strong>Disclaimer:</strong></p>
+    <p style="font-size: 1.2em;"><strong>Disclaimer:</strong></p>
 
-<p>The range of \(M_\odot\) and hydrogen mass fraction used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_H \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
-
-    </div>
+    <p style="font-size: 1.2em;">The range of \(M_\odot\) and hydrogen mass fraction used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_H \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
   </div>
 </div>
+
 
 
 
