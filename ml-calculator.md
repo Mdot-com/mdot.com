@@ -36,12 +36,13 @@ title: Mass-Luminosity Calculator
     margin-right: auto;
   }
 
-  #intro-text {
-    font-size: 1.1em;
-    max-width: 1200px;
-    margin: 0 auto 30px auto;
-    text-align: left;
-  }
+#intro-text {
+  font-size: 1.05em;
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+  text-align: justify;
+}
+
 </style>
 
 <div id="intro-text">
