@@ -75,7 +75,7 @@ title: Mass-Luminosity Calculator
 
 <p> This webpage gives an online calculator to predict the minimum, maximum and pure-He masses and luminosities with the inclusion of such He-core + H-shell models. Please read the disclaimers before using the tool. Thank you for reading and enjoy!<p> 
 
-</div>
+
 
 
 <form id="luminosity-form">
