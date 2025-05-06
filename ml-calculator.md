@@ -110,7 +110,6 @@ title: Mass-Luminosity Calculator
 
 
 
-<!-- Include MathJax for LaTeX rendering -->
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
@@ -146,13 +145,13 @@ title: Mass-Luminosity Calculator
             if (data.Pure_He_Luminosity) {
                 output.innerHTML = `
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
-                        <strong>log(L<sub>min</sub>/L<sub>⊙</sub>) =</strong> ${data.L_min}
+                        log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}
                     </p>
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
-                        <strong>log(L<sub>max</sub>/L<sub>⊙</sub>) =</strong> ${data.L_max}
+                        log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}
                     </p>
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
-                        <strong>Pure He Luminosity:</strong> ${data.Pure_He_Luminosity}
+                        log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
                     </p>
                 `;
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
@@ -165,6 +164,7 @@ title: Mass-Luminosity Calculator
         });
     });
 </script>
+
 
 
 
