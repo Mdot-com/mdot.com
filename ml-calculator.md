@@ -107,6 +107,11 @@ title: Mass-Luminosity Calculator
 
 
 
+<!-- Include MathJax for LaTeX rendering -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <script>
     document.getElementById('calculate-luminosity').addEventListener('click', function() {
         const m = parseFloat(document.getElementById('m').value);
@@ -137,10 +142,17 @@ title: Mass-Luminosity Calculator
             const output = document.getElementById('luminosity-output');
             if (data.Pure_He_Luminosity) {
                 output.innerHTML = `
-                    <p><strong>log(L<sub>min</sub>/L<sub>⊙</sub>) =</strong> ${data.L_min}</p>
-                    <p><strong>log(L<sub>max</sub>/L<sub>⊙</sub>) =</strong> ${data.L_max}</p>
-                    <p><strong>Pure He Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
+                    <p style="font-size: 1.5em; font-family: 'Times New Roman', serif;">
+                        <strong>log(L<sub>min</sub>/L<sub>⊙</sub>) =</strong> ${data.L_min}
+                    </p>
+                    <p style="font-size: 1.5em; font-family: 'Times New Roman', serif;">
+                        <strong>log(L<sub>max</sub>/L<sub>⊙</sub>) =</strong> ${data.L_max}
+                    </p>
+                    <p style="font-size: 1.5em; font-family: 'Times New Roman', serif;">
+                        <strong>Pure He Luminosity:</strong> ${data.Pure_He_Luminosity}
+                    </p>
                 `;
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
             } else {
                 output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
             }
@@ -150,4 +162,9 @@ title: Mass-Luminosity Calculator
         });
     });
 </script>
+
+<div id="luminosity-output" style="margin-top: 20px; text-align: center;">
+    <p>Results will appear here.</p>
+</div>
+
 
