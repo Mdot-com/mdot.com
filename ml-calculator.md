@@ -97,9 +97,12 @@ title: Mass-Luminosity Calculator
   <div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
     <div style="text-align: justify;">
       <h2 style="text-align: center;">How to Use</h2>
-      <p> Enter the mass in units of \(M_\odot \), hydrogen mass fraction, and metal mass fraction of the star. Pressing the "Calculate Luminosity" button gives the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
-      <p>The mass is the total mass of the star in solar masses (M<sub>⊙</sub>), X is the surface hydrogen mass fraction, and Z is the metallicity of the star. These values are used to calculate different luminosities based on the stellar structure models used in this tool.</p>
-      <p>Once you press the button, the results will be displayed below the calculator. If there are any issues with the input or the calculation, an error message will appear.</p>
+<p>Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
+
+<p><strong>Disclaimer:</strong></p>
+
+<p>The range of \(M_\odot\) and hydrogen mass fraction used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_H \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
+
     </div>
   </div>
 </div>
@@ -142,13 +145,13 @@ title: Mass-Luminosity Calculator
             const output = document.getElementById('luminosity-output');
             if (data.Pure_He_Luminosity) {
                 output.innerHTML = `
-                    <p style="font-size: 1.5em; font-family: 'Times New Roman', serif;">
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         <strong>log(L<sub>min</sub>/L<sub>⊙</sub>) =</strong> ${data.L_min}
                     </p>
-                    <p style="font-size: 1.5em; font-family: 'Times New Roman', serif;">
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         <strong>log(L<sub>max</sub>/L<sub>⊙</sub>) =</strong> ${data.L_max}
                     </p>
-                    <p style="font-size: 1.5em; font-family: 'Times New Roman', serif;">
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         <strong>Pure He Luminosity:</strong> ${data.Pure_He_Luminosity}
                     </p>
                 `;
@@ -163,8 +166,5 @@ title: Mass-Luminosity Calculator
     });
 </script>
 
-<div id="luminosity-output" style="margin-top: 20px; text-align: center;">
-    <p>Results will appear here.</p>
-</div>
 
 
