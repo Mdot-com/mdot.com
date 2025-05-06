@@ -37,10 +37,10 @@ title: Mass-Luminosity Calculator
   }
 </style>
 
-# Mass-Luminosity Calculator
 
-### Input Parameters
-Enter the values for **Mass (M)**, **Hydrogen Mass Fraction (X)**, and **Metallicity (Z)** to calculate the luminosity.
+Welcome to the mass-luminosity (ML) calculator page. Here we provide a web interface version for calculating minimum, maximum and pure-He mass-luminosity fit relations based on the structure models in Sabhahit et al. (2025b). The novelty of this work 
+
+
 
 <form id="luminosity-form">
     <label for="m">Mass (M):</label>
