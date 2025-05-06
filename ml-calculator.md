@@ -96,15 +96,13 @@ title: Mass-Luminosity Calculator
 <div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
   <div style="text-align: justify;">
     <h2 style="text-align: center; ">How to Use</h2>
-    <p style="font-size: 1.1em;">Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
+    <p style="font-size: 1.05em;">Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
 
-    <p style="font-size: 1.1em;"><strong>Disclaimer:</strong></p>
+    <p style="font-size: 1.05em;"><strong>Disclaimer:</strong></p>
 
-    <p style="font-size: 1.1em;">The range of \(M_\odot\) and hydrogen mass fraction used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_H \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
+    <p style="font-size: 1.05em;">The range of \(M_\odot\) and hydrogen mass fraction used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_H \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
   </div>
 </div>
-
-
 
 
 
@@ -118,11 +116,13 @@ title: Mass-Luminosity Calculator
         const x = parseFloat(document.getElementById('x').value);
         const z = parseFloat(document.getElementById('z').value);
 
-        if (!m || !x || !z) {
-            alert('Please enter Mass (M), Hydrogen Mass Fraction (X), and Metallicity (Z).');
+        // If any value is missing, don't show error, just return early
+        if (!m || !z) {
+            alert('Please enter Mass (M) and Metallicity (Z).');
             return;
         }
 
+        // Prepare the data to send to the backend
         const data = {
             "choice": "1",
             "Z": z,
@@ -140,7 +140,16 @@ title: Mass-Luminosity Calculator
         .then(response => response.json())
         .then(data => {
             const output = document.getElementById('luminosity-output');
-            if (data.Pure_He_Luminosity) {
+
+            // Only output Pure He Luminosity if X = 0
+            if (x === 0 && data.Pure_He_Luminosity) {
+                output.innerHTML = `
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
+                        log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
+                    </p>
+                `;
+            } else if (data.L_min && data.L_max && data.Pure_He_Luminosity) {
+                // Output all values if they exist and X is not 0
                 output.innerHTML = `
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}
@@ -152,16 +161,18 @@ title: Mass-Luminosity Calculator
                         log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
                     </p>
                 `;
-                MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
             } else {
                 output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
             }
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
         })
         .catch(error => {
             document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
         });
     });
 </script>
+
 
 
 
