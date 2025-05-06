@@ -62,7 +62,7 @@ title: Mass-Luminosity Calculator
 
 <div style="display: flex; justify-content: center; gap: 30px; margin: 30px 0;">
   <div style="text-align: center;">
-    <img src="images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 350px; border: 1px solid #ccc; padding: 5px;">
+    <img src="Gautham-Sabhahit.github.io/images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 350px; border: 1px solid #ccc; padding: 5px;">
     <p><em>Figure 1:</em> Luminosity stratification of a 5 \(M_\odot\) model with a 4 \(M_\odot\) He core and 1 \(M_\odot\) H shell.</p>
   </div>
   <div style="text-align: center;">
