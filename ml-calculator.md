@@ -77,21 +77,20 @@ title: Mass-Luminosity Calculator
 
 </div>
 
-<div style="display: flex; justify-content: space-between; margin: 30px;">
-  <!-- Left Half: Calculator -->
-  <div style="flex: 1; padding-right: 20px;">
-    <h2>Luminosity Calculator</h2>
-    <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: flex-start; gap: 15px;">
-        <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px;">
-        <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px;">
-        <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px;">
-        <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px;">Calculate Luminosity</button>
-    </form>
+<div style="flex: 1; padding-right: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+  <h2 style="margin-bottom: 20px;">Luminosity Calculator</h2>
+  <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px;">
+      <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px;">
+      <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px;">
+      <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px;">Calculate Luminosity</button>
+  </form>
 
-    <div id="luminosity-output" style="margin-top: 20px;">
-        <p>Results will appear here.</p>
-    </div>
+  <div id="luminosity-output" style="margin-top: 20px; width: 250px; text-align: center;">
+      <p>Results will appear here.</p>
   </div>
+</div>
+
 
   <!-- Right Half: Instructions -->
   <div style="flex: 1; padding-left: 20px; text-align: left;">
