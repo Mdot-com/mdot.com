@@ -94,8 +94,8 @@ title: Mass-Luminosity Calculator
   </div>
 
   <!-- Right Box -->
-  <div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: justify; box-sizing: border-box;">
-    <div>
+  <div style="width: 400px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
+    <div style="text-align: justify;">
       <h2 style="text-align: center;">How to Use</h2>
       <p> Enter the mass in units of \(M_\odot \), hydrogen mass fraction, and metal mass fraction of the star. Pressing the "Calculate Luminosity" button gives the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
       <p>The mass is the total mass of the star in solar masses (M<sub>⊙</sub>), X is the surface hydrogen mass fraction, and Z is the metallicity of the star. These values are used to calculate different luminosities based on the stellar structure models used in this tool.</p>
