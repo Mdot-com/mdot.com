@@ -78,7 +78,7 @@ title: Mass-Luminosity Calculator
     <!-- Left Box -->
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <h2 style="text-align: center; margin-bottom: 20px; font-size: 1.1em;">Luminosity Calculator</h2>
+        <h2 style="text-align: center; margin-bottom: 20px; font-size: 1.em;">Luminosity Calculator</h2>
         <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
           <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.8em;">
           <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
@@ -94,7 +94,7 @@ title: Mass-Luminosity Calculator
     <!-- Right Box -->
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
       <div style="text-align: justify;">
-        <h2 style="text-align: center; font-size: 1.2em;">How to Use</h2>
+        <h2 style="text-align: center; font-size: 1.em;">How to Use</h2>
         <p style="font-size: 0.9em;">Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
 
         <p style="font-size: 0.9em;"><strong>Disclaimer:</strong></p>
