@@ -82,10 +82,10 @@ title: Mass-Luminosity Calculator
     <div style="display: flex; flex-direction: column; align-items: center;">
       <h2 style="text-align: center; margin-bottom: 20px; font-size: 1.2em;">Luminosity Calculator</h2>
       <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-        <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.95em;">
-        <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.95em;">
-        <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.95em;">
-        <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px; font-size: 1em;">Calculate Luminosity</button>
+        <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.85em;">
+        <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.85em;">
+        <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.85em;">
+        <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px; font-size: 0.9em;">Calculate Luminosity</button>
       </form>
       <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
         <p style="font-size: 1em;">Results will appear here.</p>
