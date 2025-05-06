@@ -63,11 +63,12 @@ title: Mass-Luminosity Calculator
 <div style="display: flex; justify-content: center; gap: 30px; margin: 30px 0;">
   <div style="text-align: center;">
     <img src="https://gautham-sabhahit.github.io/images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 550px; border: 1px solid #ccc; padding: 5px;">
-    <p><em>Figure 1:</em> Luminosity stratification of a \( 5 \, M_\odot \) model with a \( 4 \, M_\odot \) He core and \( 1 \, M_\odot \) H shell.</p>
+    <p><em>Figure 1:</em> Luminosity stratification of a \( 5 \, M_\odot \) model with a \( 4 \, M_\odot \) He core and \( 1 \, M_\odot \) H shell. The two spikes in the specific nuclear energy generation rate at 0 and \( 4 \, M_\odot \) marks the He burning core and the H burning shell.</p>
   </div>
   <div style="text-align: center;">
     <img src="https://gautham-sabhahit.github.io/images/max_s_max_L_M5.0.png" alt="Figure 2" style="max-width: 100%; width: 550px; border: 1px solid #ccc; padding: 5px;">
-    <p><em>Figure 2:</em> Nuclear energy generation rate showing dual burning regions in the same model.</p>
+<p><em>Figure 2:</em> Variation of luminosity as a function of slope \( (0 < s \leq \infty) \) for different values of \( X_H \). The total mass \( M_{\text{tot}} \) is fixed at \( 5 M_{\odot} \). The figure shows the luminosity peak at an \( s \)-value between the extremes \( s = 0 \) and \( s = \infty \).</p>
+
   </div>
 </div>
 
@@ -116,13 +117,11 @@ title: Mass-Luminosity Calculator
         const x = parseFloat(document.getElementById('x').value);
         const z = parseFloat(document.getElementById('z').value);
 
-        // If any value is missing, don't show error, just return early
-        if (!m || !z) {
-            alert('Please enter Mass (M) and Metallicity (Z).');
+        if (!m || !x || !z) {
+            alert('Please enter Mass (M), Hydrogen Mass Fraction (X), and Metallicity (Z).');
             return;
         }
 
-        // Prepare the data to send to the backend
         const data = {
             "choice": "1",
             "Z": z,
@@ -140,17 +139,8 @@ title: Mass-Luminosity Calculator
         .then(response => response.json())
         .then(data => {
             const output = document.getElementById('luminosity-output');
-
-            // Only output Pure He Luminosity if X = 0
-            if (x === 0 && data.Pure_He_Luminosity) {
-                output.innerHTML = `
-                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
-                        log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
-                    </p>
-                `;
-            } else if (data.L_min && data.L_max && data.Pure_He_Luminosity) {
-                // Output all values if they exist and X is not 0
-                output.innerHTML = `
+            if (data.Pure_He_Luminosity) {
+                output.innerHTML = 
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}
                     </p>
@@ -160,12 +150,11 @@ title: Mass-Luminosity Calculator
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
                     </p>
-                `;
+                ;
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
             } else {
                 output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
             }
-
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
         })
         .catch(error => {
             document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
