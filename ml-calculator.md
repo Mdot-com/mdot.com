@@ -78,11 +78,11 @@ title: Mass-Luminosity Calculator
     <!-- Left Box -->
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <h2 style="text-align: center; margin-bottom: 20px; font-size: 1.2em;">Luminosity Calculator</h2>
+        <h2 style="text-align: center; margin-bottom: 20px; font-size: 1.1em;">Luminosity Calculator</h2>
         <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-          <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.85em;">
-          <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.85em;">
-          <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.85em;">
+          <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+          <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+          <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
           <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px; font-size: 0.9em;">Calculate Luminosity</button>
         </form>
         <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
@@ -95,11 +95,11 @@ title: Mass-Luminosity Calculator
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
       <div style="text-align: justify;">
         <h2 style="text-align: center; font-size: 1.2em;">How to Use</h2>
-        <p style="font-size: 0.85em;">Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
+        <p style="font-size: 0.9em;">Enter the mass in units of \(M_\odot\), hydrogen mass fraction, and metallicity of the star. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
 
-        <p style="font-size: 0.85em;"><strong>Disclaimer:</strong></p>
+        <p style="font-size: 0.9em;"><strong>Disclaimer:</strong></p>
 
-        <p style="font-size: 0.85em;">The range of \(M_\odot\) and hydrogen mass fraction used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_H \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
+        <p style="font-size: 0.9em;">The range of \(M_\odot\) and hydrogen mass fraction used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_H \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
       </div>
     </div>
   </div>
@@ -134,13 +134,13 @@ title: Mass-Luminosity Calculator
       const output = document.getElementById('luminosity-output');
       if (x === 0 && data.Pure_He_Luminosity) {
         output.innerHTML = `
-          <p>log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
+          <p style="font-size: 1.2em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
         `;
       } else if (data.Pure_He_Luminosity) {
         output.innerHTML = `
-          <p>log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
-          <p>log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
-          <p>log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
+          <p style="font-size: 1.2em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
+          <p style="font-size: 1.2em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
+          <p style="font-size: 1.2em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
         `;
       } else {
         output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
@@ -151,3 +151,4 @@ title: Mass-Luminosity Calculator
     });
   });
 </script>
+
