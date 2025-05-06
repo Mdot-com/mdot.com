@@ -137,18 +137,19 @@ title: Mass-Luminosity Calculator
             body: JSON.stringify(data)
         })
         .then(response => response.json())
-        .then(data => {
-            const output = document.getElementById('luminosity-output');
-            if (data.Pure_He_Luminosity) {
-                output.innerHTML = 
-                    <p><strong>L_min:</strong> ${data.L_min}</p>
-                    <p><strong>L_max:</strong> ${data.L_max}</p>
-                    <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
-                ;
-            } else {
-                output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-            }
-        })
+.then(data => {
+    const output = document.getElementById('luminosity-output');
+    if (data.Pure_He_Luminosity) {
+        output.innerHTML = `
+            <p><strong>L_min:</strong> ${data.L_min}</p>
+            <p><strong>L_max:</strong> ${data.L_max}</p>
+            <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
+        `;
+    } else {
+        output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+    }
+})
+
         .catch(error => {
             document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
         });
