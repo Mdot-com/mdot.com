@@ -63,7 +63,7 @@ title: Mass-Luminosity Calculator
 <div style="display: flex; justify-content: center; gap: 30px; margin: 30px 0;">
   <div style="text-align: center;">
     <img src="https://gautham-sabhahit.github.io/images/chemical_profile_structure_L.png" alt="Figure 1" style="max-width: 100%; width: 500px; border: 1px solid #ccc; padding: 5px;">
-    <p><em>Figure 1:</em> Luminosity stratification of a 5 \(M_\odot\) model with a 4 \(M_\odot\) He core and 1 \(M_\odot\) H shell.</p>
+    <p><em>Figure 1:</em> Luminosity stratification of a \( 5 \, M_\odot \) model with a \( 4 \, M_\odot \) He core and \( 1 \, M_\odot \) H shell.</p>
   </div>
   <div style="text-align: center;">
     <img src="https://gautham-sabhahit.github.io/images/max_s_max_L_M5.0.png" alt="Figure 2" style="max-width: 100%; width: 500px; border: 1px solid #ccc; padding: 5px;">
@@ -71,22 +71,25 @@ title: Mass-Luminosity Calculator
   </div>
 </div>
 
-<p>We utilise our large grid of structure models to make predictions for the minimum, maximum and pure-He MLRs. See Fig. 2, where we fix the \(M_\mathrm{tot}\) to \( 5 \, M_\odot \) and plot the variation of surface luminosity with slope \(s\) for different \(X_\mathrm{H}\). We notice that for a given a \(M_\mathrm{tot}\) and surface \(X_\mathrm{H}\). the minimum luminosity still occurs for the $s=0$ chemically homogeneous model However, the maximum luminosity does not correspond to the $s=\infty$ pure-He model, but a model in between these two extremes with a partially He-core + H-shell structure. Vice versa, the minimum mass does not occur for the pure-He model but for a partially stripped He-core + H-shell structure. <p>
+<p>In **Figure 2**, we plot the variation of surface luminosity with slope $s$ for different values of surface hydrogen mass fraction $X_\mathrm{H}$, while fixing \(M_\mathrm{tot}\) to \( 5 \, M_\odot \). We observe that for a given $M_\mathrm{tot}$ and $X_\mathrm{H}$, the minimum luminosity still corresponds to the $s = 0$ chemically homogeneous model. However, the maximum luminosity does **not** occur for the $s = \infty$ pure-He model, but rather at an intermediate slope with a He-core + H-shell structure corresponding to partial stripping. Conversely, the **minimum** mass does not correspond to the pure-He model either, but again to a He-core + H-shell configuration.<p>
 
-<p> This webpage gives an online calculator to predict the minimum, maximum and pure-He masses and luminosities with the inclusion of such He-core + H-shell models. Please read the disclaimers before using the tool. Thank you for reading and enjoy!<p> 
+<p>This webpage provides an interactive calculator to predict the minimum, maximum, and pure-He masses and luminosities, with the inclusion of models with such He-core + H-shell structures. Please read the how to use and disclaimers before using the tool. Thank you for visiting — enjoy!<p>
 
 <div style="display: flex; justify-content: space-between; margin: 30px;">
   <!-- Left Half: Calculator -->
   <div style="flex: 1; padding-right: 20px;">
     <h2>Luminosity Calculator</h2>
     <form id="luminosity-form">
-        <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)">
+        <label for="m">Mass (M):</label>
+        <input type="number" id="m" name="m" step="any" required>
         <br><br>
 
-        <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)">
+        <label for="x">Hydrogen Mass Fraction (X):</label>
+        <input type="number" id="x" name="x" step="any" required>
         <br><br>
 
-        <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)">
+        <label for="z">Metallicity (Z):</label>
+        <input type="number" id="z" name="z" step="any" required>
         <br><br>
 
         <button type="button" id="calculate-luminosity">Calculate Luminosity</button>
@@ -106,4 +109,46 @@ title: Mass-Luminosity Calculator
   </div>
 </div>
 
+<script>
+    document.getElementById('calculate-luminosity').addEventListener('click', function() {
+        const m = parseFloat(document.getElementById('m').value);
+        const x = parseFloat(document.getElementById('x').value);
+        const z = parseFloat(document.getElementById('z').value);
 
+        if (!m || !x || !z) {
+            alert('Please enter Mass (M), Hydrogen Mass Fraction (X), and Metallicity (Z).');
+            return;
+        }
+
+        const data = {
+            "choice": "1",
+            "Z": z,
+            "m": m,
+            "x": x
+        };
+
+        fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            const output = document.getElementById('luminosity-output');
+            if (data.Pure_He_Luminosity) {
+                output.innerHTML = 
+                    <p><strong>L_min:</strong> ${data.L_min}</p>
+                    <p><strong>L_max:</strong> ${data.L_max}</p>
+                    <p><strong>Pure_He_Luminosity:</strong> ${data.Pure_He_Luminosity}</p>
+                ;
+            } else {
+                output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+            }
+        })
+        .catch(error => {
+            document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+        });
+    });
+</script>
