@@ -21,9 +21,9 @@ title: Mass-Luminosity Calculator
 
   input, button {
     margin-top: 5px;
-    width: 200px; /* Set a fixed width for the input boxes */
+    width: 200px;
     padding: 5px;
-    text-align: center;
+    text-align: left;
   }
 
   #luminosity-output {
@@ -35,14 +35,20 @@ title: Mass-Luminosity Calculator
     margin-left: auto;
     margin-right: auto;
   }
+
+  #intro-text {
+    font-size: 1.15em;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    text-align: left;
+  }
 </style>
 
+<div id="intro-text">
+  Welcome to the mass-luminosity (ML) calculator page. Here we provide a web interface version for calculating minimum, maximum and pure-He mass-luminosity fit relations based on the structure models in Sabhahit et al. (2025b). The novelty of this work is in the inclusion of stripped stars that can seemingly break simple homology relations due to the disproportionate contribution of H shell to the total luminosity.
 
-Welcome to the mass-luminosity (ML) calculator page. Here we provide a web interface version for calculating minimum, maximum and pure-He mass-luminosity fit relations based on the structure models in Sabhahit et al. (2025b). The novelty of this work is in the inclusion of stripped stars that can seemingly break simple homology relations due to the disproportionate contribution of H shell to the total luminosity. 
-
-Traditionally, for a given total mass $M_\mathrm{tot}$ and surface hydrogen mass fraction $X_\mathrm{H}$, the minimum luminosity occurs for a fully chemically homogeneous star with the $X(m) = X_\mathrm{H}$ and the maximum mass occurs for a pure-He star corresponding to full stripping. These arguments can be understood with simple homology relations $L\sim \mu^4 M^3$.
-
-
+  Traditionally, for a given total mass \(M_\mathrm{tot}\) and surface hydrogen mass fraction \(X_\mathrm{H}\), the minimum luminosity occurs for a fully chemically homogeneous star with \(X(m) = X_\mathrm{H}\), and the maximum luminosity occurs for a pure-He star corresponding to full stripping. These arguments can be understood with simple homology relations \(L \sim \mu^4 M^3\).
+</div>
 
 <form id="luminosity-form">
     <label for="m">Mass (M):</label>
