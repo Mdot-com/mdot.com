@@ -73,7 +73,7 @@ title: Mass-Luminosity Calculator
 
 <p>We utilise our large grid of structure models to make predictions for the minimum, maximum and pure-He MLRs. See Fig. 2, where we fix the \(M_\mathrm{tot}\) to \( 5 \, M_\odot \) and plot the variation of surface luminosity with slope \(s\) for different \(X_\mathrm{H}\). We notice that for a given a \(M_\mathrm{tot}\) and surface \(X_\mathrm{H}\). the minimum luminosity still occurs for the $s=0$ chemically homogeneous model However, the maximum luminosity does not correspond to the $s=\infty$ pure-He model, but a model in between these two extremes with a partially He-core + H-shell structure. Vice versa, the minimum mass does not occur for the pure-He model but for a partially stripped He-core + H-shell structure. <p>
 
-<p> This webpage gives an online calculator to predict the minimum, maximum and pure-He masses and luminosities with the inclusion of such He-core + H-shell models.<p> 
+<p> This webpage gives an online calculator to predict the minimum, maximum and pure-He masses and luminosities with the inclusion of such He-core + H-shell models. Please read the disclaimers before using the tool. Thank you for reading and enjoy!<p> 
 
 </div>
 
