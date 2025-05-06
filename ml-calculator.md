@@ -134,13 +134,13 @@ title: Mass-Luminosity Calculator
       const output = document.getElementById('luminosity-output');
       if (x === 0 && data.Pure_He_Luminosity) {
         output.innerHTML = `
-          <p style="font-size: 1.2em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
+          <p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
         `;
       } else if (data.Pure_He_Luminosity) {
         output.innerHTML = `
-          <p style="font-size: 1.2em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
-          <p style="font-size: 1.2em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
-          <p style="font-size: 1.2em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
+          <p style="font-size: 1.1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
+          <p style="font-size: 1.1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
+          <p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
         `;
       } else {
         output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
