@@ -112,6 +112,9 @@ title: Mass-Luminosity Calculator
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 <script>
     document.getElementById('calculate-luminosity').addEventListener('click', function() {
@@ -119,8 +122,8 @@ title: Mass-Luminosity Calculator
         const x = parseFloat(document.getElementById('x').value);
         const z = parseFloat(document.getElementById('z').value);
 
-        if (!m || !x || !z) {
-            alert('Please enter Mass (M), Hydrogen Mass Fraction (X), and Metallicity (Z).');
+        if (!m || !z) {
+            alert('Please enter Mass (M) and Metallicity (Z).');
             return;
         }
 
@@ -141,7 +144,15 @@ title: Mass-Luminosity Calculator
         .then(response => response.json())
         .then(data => {
             const output = document.getElementById('luminosity-output');
-            if (data.Pure_He_Luminosity) {
+
+            // If X = 0, only output Pure_He_Luminosity
+            if (x === 0 && data.Pure_He_Luminosity) {
+                output.innerHTML = `
+                    <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
+                        log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
+                    </p>
+                `;
+            } else if (data.Pure_He_Luminosity) {
                 output.innerHTML = `
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}
@@ -153,16 +164,18 @@ title: Mass-Luminosity Calculator
                         log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
                     </p>
                 `;
-                MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
             } else {
                 output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
             }
+
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
         })
         .catch(error => {
             document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
         });
     });
 </script>
+
 
 
 
