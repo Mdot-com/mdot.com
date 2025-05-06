@@ -76,27 +76,26 @@ title: Mass-Luminosity Calculator
 <p>This webpage provides an interactive calculator to predict the minimum, maximum, and pure-He masses and luminosities, with the inclusion of models with such He-core + H-shell structures. Please read the how to use and disclaimers before using the tool. Thank you for visiting — enjoy!</p>
 
 </div>
-
-<div style="display: flex; justify-content: space-between; margin: 30px; height: 80vh;">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 30px;">
   <!-- Left Half: Calculator -->
-  <div style="flex: 1; display: flex; justify-content: center; align-items: center; padding-right: 20px;">
-    <div>
+  <div style="flex: 1; display: flex; justify-content: center; padding-right: 20px; box-sizing: border-box;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
       <h2 style="text-align: center; margin-bottom: 20px;">Luminosity Calculator</h2>
       <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-          <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px;">
-          <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px;">
-          <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px;">
-          <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px;">Calculate Luminosity</button>
+        <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px;">
+        <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px;">
+        <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px;">
+        <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px;">Calculate Luminosity</button>
       </form>
 
       <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
-          <p>Results will appear here.</p>
+        <p>Results will appear here.</p>
       </div>
     </div>
   </div>
 
   <!-- Right Half: Instructions -->
-  <div style="flex: 1; padding-left: 20px; text-align: left;">
+  <div style="flex: 1; padding-left: 20px; text-align: left; box-sizing: border-box;">
     <h2>How to Use</h2>
     <p>Enter the mass, hydrogen mass fraction, and metallicity of the star in the calculator on the left. After entering the values, press the "Calculate Luminosity" button to see the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
     <p>The mass is the total mass of the star in solar masses (M<sub>⊙</sub>), X is the surface hydrogen mass fraction, and Z is the metallicity of the star. These values are used to calculate different luminosities based on the stellar structure models used in this tool.</p>
