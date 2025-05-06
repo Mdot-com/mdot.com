@@ -37,17 +37,17 @@ title: Mass-Luminosity Calculator
   }
 
   #intro-text {
-    font-size: 1.15em;
-    max-width: 800px;
+    font-size: 1.05em;
+    max-width: 900px;
     margin: 0 auto 30px auto;
     text-align: left;
   }
 </style>
 
 <div id="intro-text">
-  Welcome to the mass-luminosity (ML) calculator page. Here we provide a web interface version for calculating minimum, maximum and pure-He mass-luminosity fit relations based on the structure models in Sabhahit et al. (2025b). The novelty of this work is in the inclusion of stripped stars that can seemingly break simple homology relations due to the disproportionate contribution of H shell to the total luminosity.
+  <p>Welcome to the mass-luminosity (ML) calculator page. Here we provide a web interface version for calculating minimum, maximum and pure-He mass-luminosity fit relations based on the structure models in Sabhahit et al. (2025b). The novelty of this work is in the inclusion of stripped stars that can seemingly break simple homology relations due to the disproportionate contribution of H shell to the total luminosity.</p>
 
-  Traditionally, for a given total mass \(M_\mathrm{tot}\) and surface hydrogen mass fraction \(X_\mathrm{H}\), the minimum luminosity occurs for a fully chemically homogeneous star with \(X(m) = X_\mathrm{H}\), and the maximum luminosity occurs for a pure-He star corresponding to full stripping. These arguments can be understood with simple homology relations \(L \sim \mu^4 M^3\).
+  <p>Traditionally, for a given total mass \(M_\mathrm{tot}\) and surface hydrogen mass fraction \(X_\mathrm{H}\), the minimum luminosity occurs for a fully chemically homogeneous star with \(X(m) = X_\mathrm{H}\), and the maximum luminosity occurs for a pure-He star corresponding to full stripping. These arguments can be understood with simple homology relations \(L \sim \mu^4 M^3\).</p>
 </div>
 
 <form id="luminosity-form">
