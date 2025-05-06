@@ -140,7 +140,7 @@ title: Mass-Luminosity Calculator
         .then(data => {
             const output = document.getElementById('luminosity-output');
             if (data.Pure_He_Luminosity) {
-                output.innerHTML = 
+                output.innerHTML = `
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}
                     </p>
@@ -150,7 +150,7 @@ title: Mass-Luminosity Calculator
                     <p style="font-size: 1.3em; font-family: 'Times New Roman', serif;">
                         log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}
                     </p>
-                ;
+                `;
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub, output]);
             } else {
                 output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
@@ -161,6 +161,7 @@ title: Mass-Luminosity Calculator
         });
     });
 </script>
+
 
 
 
