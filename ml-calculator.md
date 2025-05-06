@@ -74,7 +74,7 @@ title: Mass-Luminosity Calculator
 <p>In <strong>Figure 2</strong>, we plot the variation of surface luminosity with slope $s$ for different values of surface hydrogen mass fraction $X_\mathrm{H}$, while fixing $M_\mathrm{tot}$ to $5 \, M_\odot$. We observe that for a given $M_\mathrm{tot}$ and $X_\mathrm{H}$, the minimum luminosity still corresponds to the $s = 0$ chemically homogeneous model. However, the maximum luminosity does <strong>not</strong> occur for the $s = \infty$ pure-He model, but rather at an intermediate slope with a He-core + H-shell structure corresponding to partial stripping. Conversely, the <strong>minimum</strong> mass does not correspond to the pure-He model either, but again to a He-core + H-shell configuration.</p>
 
 <p>This webpage provides an interactive calculator to predict the minimum, maximum, and pure-He masses and luminosities, with the inclusion of models with such He-core + H-shell structures. Please read the how to use and disclaimers before using the tool. Thank you for visiting — enjoy!</p>
-
+</div>
 
 <div style="display: flex; justify-content: space-between; margin: 30px;">
   <!-- Left Half: Calculator -->
