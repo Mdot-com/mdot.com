@@ -75,28 +75,38 @@ title: Mass-Luminosity Calculator
 
 <p> This webpage gives an online calculator to predict the minimum, maximum and pure-He masses and luminosities with the inclusion of such He-core + H-shell models. Please read the disclaimers before using the tool. Thank you for reading and enjoy!<p> 
 
+<div style="display: flex; justify-content: space-between; margin: 30px;">
+  <!-- Left Half: Calculator -->
+  <div style="flex: 1; padding-right: 20px;">
+    <h2>Mass-Luminosity Calculator</h2>
+    <form id="luminosity-form">
+        <label for="m">Mass (M):</label>
+        <input type="number" id="m" name="m" step="any" required>
+        <br><br>
 
+        <label for="x">Hydrogen Mass Fraction (X):</label>
+        <input type="number" id="x" name="x" step="any" required>
+        <br><br>
 
+        <label for="z">Metallicity (Z):</label>
+        <input type="number" id="z" name="z" step="any" required>
+        <br><br>
 
-<form id="luminosity-form">
-    <label for="m">Mass (M):</label>
-    <input type="number" id="m" name="m" step="any" required>
-    <br><br>
+        <button type="button" id="calculate-luminosity">Calculate Luminosity</button>
+    </form>
 
-    <label for="x">Hydrogen Mass Fraction (X):</label>
-    <input type="number" id="x" name="x" step="any" required>
-    <br><br>
+    <div id="luminosity-output" style="margin-top: 20px;">
+        <p>Results will appear here.</p>
+    </div>
+  </div>
 
-    <label for="z">Metallicity (Z):</label>
-    <input type="number" id="z" name="z" step="any" required>
-    <br><br>
-
-    <button type="button" id="calculate-luminosity">Calculate Luminosity</button>
-</form>
-
-### Results:
-<div id="luminosity-output">
-    <p>Results will appear here.</p>
+  <!-- Right Half: Instructions -->
+  <div style="flex: 1; padding-left: 20px; text-align: left;">
+    <h2>How to Use</h2>
+    <p>Enter the mass, hydrogen mass fraction, and metallicity of the star in the calculator on the left. After entering the values, press the "Calculate Luminosity" button to see the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
+    <p>The mass is the total mass of the star in solar masses (M<sub>⊙</sub>), X is the surface hydrogen mass fraction, and Z is the metallicity of the star. These values are used to calculate different luminosities based on the stellar structure models used in this tool.</p>
+    <p>Once you press the button, the results will be displayed below the calculator. If there are any issues with the input or the calculation, an error message will appear.</p>
+  </div>
 </div>
 
 <script>
@@ -142,3 +152,4 @@ title: Mass-Luminosity Calculator
         });
     });
 </script>
+
