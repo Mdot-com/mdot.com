@@ -37,8 +37,8 @@ title: Mass-Luminosity Calculator
   }
 
   #intro-text {
-    font-size: 1.05em;
-    max-width: 900px;
+    font-size: 1.1em;
+    max-width: 1200px;
     margin: 0 auto 30px auto;
     text-align: left;
   }
