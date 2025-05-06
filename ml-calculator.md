@@ -46,10 +46,21 @@ title: Mass-Luminosity Calculator
 </style>
 
 <div id="intro-text">
-  <p>Welcome to the mass-luminosity (ML) calculator page. Here we provide a web interface version for calculating minimum, maximum and pure-He mass-luminosity fit relations based on the structure models in Sabhahit et al. (2025b). The novelty of this work is in the inclusion of stripped stars that can seemingly break simple homology relations due to the disproportionate contribution of H shell to the total luminosity.</p>
+  <p>
+    Welcome to the mass-luminosity (ML) calculator page. Here we provide a web interface version for calculating minimum, maximum and pure-He mass-luminosity fit relations based on the stellar structure models in Sabhahit et al. (2025b). The novelty of this work is in the inclusion of stripped stars that can seemingly break simple homology relations due to the disproportionate contribution of H shell to the total luminosity.
+  </p>
 
-  <p>Traditionally, for a given total mass \(M_\mathrm{tot}\) and surface hydrogen mass fraction \(X_\mathrm{H}\), the minimum luminosity occurs for a fully chemically homogeneous star with \(X(m) = X_\mathrm{H}\), and the maximum luminosity occurs for a pure-He star corresponding to full stripping. These arguments can be understood with simple homology relations \(L \sim \mu^4 M^3\).</p>
+  <p><strong>MLRs in the literature</strong></p>
+  <p>
+    Typically, based on homology relations \(L \sim \mu^4 M^3\), the minimum luminosity for a given total mass \(M_\mathrm{tot}\) and surface hydrogen mass fraction \(X_\mathrm{H}\) occurs for a fully chemically homogeneous star with \(X(m) = X_\mathrm{H}\). The maximum luminosity occurs for a pure-He star configuration with \(X(m) = 0\) corresponding to full stripping. Vice versa, the maximum mass for a given luminosity and surface \(X_\mathrm{H}\) occurs for a chemically homogeneous star while the minimum mass occurs for a pure-He star. Such maximum and minimum MLRs are provided in Gräfener et al. (2011).
+  </p>
+
+  <p><strong>How do we build on it?</strong></p>
+  <p>
+    In Sabhahit et al. (2025b), we build a large grid of structure models.
+  </p>
 </div>
+
 
 <form id="luminosity-form">
     <label for="m">Mass (M):</label>
