@@ -77,20 +77,23 @@ title: Mass-Luminosity Calculator
 
 </div>
 
-<div style="flex: 1; padding-right: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
-  <h2 style="margin-bottom: 20px;">Luminosity Calculator</h2>
-  <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-      <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px;">
-      <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px;">
-      <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px;">
-      <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px;">Calculate Luminosity</button>
-  </form>
+<div style="display: flex; justify-content: space-between; margin: 30px; height: 80vh;">
+  <!-- Left Half: Calculator -->
+  <div style="flex: 1; display: flex; justify-content: center; align-items: center; padding-right: 20px;">
+    <div>
+      <h2 style="text-align: center; margin-bottom: 20px;">Luminosity Calculator</h2>
+      <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+          <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px;">
+          <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px;">
+          <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px;">
+          <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px;">Calculate Luminosity</button>
+      </form>
 
-  <div id="luminosity-output" style="margin-top: 20px; width: 250px; text-align: center;">
-      <p>Results will appear here.</p>
+      <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
+          <p>Results will appear here.</p>
+      </div>
+    </div>
   </div>
-</div>
-
 
   <!-- Right Half: Instructions -->
   <div style="flex: 1; padding-left: 20px; text-align: left;">
@@ -100,6 +103,7 @@ title: Mass-Luminosity Calculator
     <p>Once you press the button, the results will be displayed below the calculator. If there are any issues with the input or the calculation, an error message will appear.</p>
   </div>
 </div>
+
 
 
 <script>
