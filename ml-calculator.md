@@ -85,7 +85,7 @@ title: Mass-Luminosity Calculator
         <input type="number" id="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <button type="button" id="calculate-luminosity" style="width: 220px; padding: 8px; margin-top: 10px; font-size: 0.8em;">Calculate Luminosity</button>
       </form>
-      <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
+      <div id="luminosity-output" style="margin-top: 20px; text-align: center; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f5f5f5;">
         <p style="font-size: 0.85em;">Results will appear here.</p>
       </div>
     </div>
@@ -114,7 +114,7 @@ title: Mass-Luminosity Calculator
         <input type="number" id="z_mass" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <button type="button" id="calculate-mass" style="width: 220px; padding: 8px; margin-top: 10px; font-size: 0.8em;">Calculate Mass</button>
       </form>
-      <div id="mass-output" style="margin-top: 20px; text-align: center;">
+      <div id="mass-output" style="margin-top: 20px; text-align: center; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f5f5f5;">
         <p style="font-size: 0.85em;">Results will appear here.</p>
       </div>
     </div>
@@ -124,10 +124,11 @@ title: Mass-Luminosity Calculator
   <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
     <div style="text-align: justify;">
       <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
-      <p style="font-size: 0.8em;">To estimate mass from luminosity, enter the log luminosity value, surface hydrogen abundance, and metallicity. Mass estimation is subject to the same model grid as the luminosity calculator and may be interpolated or extrapolated accordingly.</p>
+      <p style="font-size: 0.8em;">Enter the stellar luminosity as $\log\left(\frac{L}{L_\odot}\right)$, hydrogen and metal abundances as mass fractions. Pressing the "Calculate Mass" button will provide the minimum mass, maximum mass, and pure-He mass for the given parameters.</p>
     </div>
   </div>
 </div>
+
 
 <script>
   document.getElementById('calculate-luminosity').addEventListener('click', function() {
