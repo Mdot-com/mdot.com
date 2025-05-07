@@ -108,7 +108,7 @@ title: Mass-Luminosity Calculator
   <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
     <div style="display: flex; flex-direction: column; align-items: center;">
       <h2 style="text-align: center; margin-bottom: 20px; font-size: 1em;">Mass Calculator</h2>
-      <form id="mass-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+      <form id="mass-form" style="display: flex; flex-direction: column; align-items: center; gap: 18px;">
         <input type="number" id="l" step="any" required placeholder="Luminosity log(L/L☉)" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <input type="number" id="x_mass" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <input type="number" id="z_mass" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
