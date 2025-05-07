@@ -74,7 +74,6 @@ title: Mass-Luminosity Calculator
 
   const luminosityHTML = `
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 20px;">
-      <h2 style="text-align: center; font-size: 1em;">Luminosity Calculator</h2>
       <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
         <input type="number" id="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <input type="number" id="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
@@ -87,7 +86,6 @@ title: Mass-Luminosity Calculator
 
   const massHTML = `
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 20px;">
-      <h2 style="text-align: center; font-size: 1em;">Mass Calculator</h2>
       <form id="mass-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
         <input type="number" id="l" step="any" required placeholder="Luminosity log(L/L☉)" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <input type="number" id="x_mass" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
@@ -103,6 +101,7 @@ title: Mass-Luminosity Calculator
     calculatorContainer.innerHTML = selected === 'luminosity' ? luminosityHTML : massHTML;
   });
 </script>
+
 
 
 <script>
