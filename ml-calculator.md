@@ -66,13 +66,13 @@ title: Mass-Luminosity Calculator
     </div>
     <div style="text-align: center;">
       <img src="https://gautham-sabhahit.github.io/images/max_s_max_L_M5.0.png" alt="Figure 2" style="max-width: 100%; width: 550px; border: 1px solid #ccc; padding: 5px;">
-      <p><em>Figure 2:</em> Variation of luminosity as a function of slope \( (0 \leq s \leq \infty) \) for different values of \( X_H \). The total mass \( M_{\text{tot}} \) is fixed at \( 5\, M_{\odot} \). The figure shows the luminosity peak at an \( s \)-value between the extremes \( s = 0 \) and \( s = \infty \).</p>
+      <p><em>Figure 2:</em> Variation of luminosity as a function of slope \( (0 \leq s \leq \infty) \) for different values of surface \( X_\mathrm{H} \). The total mass \( M_{\text{tot}} \) is fixed at \( 5\, M_{\odot} \). The figure shows the luminosity peak at an \( s \)-value between the extremes \( s = 0 \) and \( s = \infty \).</p>
     </div>
   </div>
 
-  <p>In <strong>Figure 2</strong>, we plot the variation of surface luminosity with slope \( s \) for different values of surface hydrogen mass fraction \( X_\mathrm{H} \), while fixing \( M_\mathrm{tot} \) to \( 5 \, M_\odot \). We observe that for a given \( M_\mathrm{tot} \) and \( X_\mathrm{H} \), the minimum luminosity still corresponds to the \( s = 0 \) chemically homogeneous model. However, the <strong>maximum luminosity</strong> does <strong>not</strong> occur for the \( s = \infty \) pure-He model, but rather at an intermediate slope with a He-core + H-shell structure corresponding to partial stripping. Conversely, the <strong>minimum mass</strong> does not correspond to the pure-He model either, but again to a He-core + H-shell configuration.</p>
+  <p>In <strong>Figure 2</strong>, we plot the variation of surface luminosity with slope \( s \) for different values of surface \( X_\mathrm{H} \), while fixing \( M_\mathrm{tot} \) to \( 5 \, M_\odot \). We observe that for a given \( M_\mathrm{tot} \) and \( X_\mathrm{H} \), the minimum luminosity still corresponds to the \( s = 0 \) chemically homogeneous model. However, the <strong>maximum luminosity</strong> does <strong>not</strong> occur for the \( s = \infty \) pure-He model, but rather at an intermediate slope with a He-core + H-shell structure corresponding to partial stripping. Similarly, the <strong>minimum mass</strong> does not correspond to the pure-He model either, but again to a He-core + H-shell configuration.</p>
 
-  <p>This webpage provides an interactive calculator to predict the minimum, maximum, and pure-He masses and luminosities, with the inclusion of models with such He-core + H-shell structures. Please read the how to use and disclaimers before using the tool. Thank you for reading - enjoy!</p>
+  <p>This webpage provides an interactive calculator to predict the minimum, maximum, and pure-He masses and luminosities, including models with such He-core + H-shell structures. Please read the how to use and disclaimers before using the tool. Thank you for reading - enjoy!</p>
 
   <div style="display: flex; justify-content: center; align-items: flex-start; margin: 30px; gap: 40px;">
     <!-- Left Box -->
