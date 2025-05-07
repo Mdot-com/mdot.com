@@ -201,7 +201,7 @@ title: Mass-Luminosity Calculator
     const data = {
       "choice": "2",
       "Z": z,
-      "l": l,
+      "L": l,
       "x": x
     };
 
@@ -246,4 +246,3 @@ title: Mass-Luminosity Calculator
     });
   });
 </script>
-
