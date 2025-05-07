@@ -190,8 +190,8 @@ title: Mass-Luminosity Calculator
 
   document.getElementById('calculate-mass').addEventListener('click', function() {
     const l = parseFloat(document.getElementById('l').value);
-    const x = parseFloat(document.getElementById('x').value);
-    const z = parseFloat(document.getElementById('z').value);
+    const x = parseFloat(document.getElementById('x_mass').value);
+    const z = parseFloat(document.getElementById('z_mass').value);
 
     if (!l || !z) {
       alert('Please enter Luminosity (L) and Metallicity (Z).');
@@ -246,3 +246,4 @@ title: Mass-Luminosity Calculator
     });
   });
 </script>
+
