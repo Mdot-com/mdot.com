@@ -141,15 +141,17 @@ title: Mass-Luminosity Calculator
     }
 
     const data = {
-      choice: "1",
-      m: m,
-      x: x,
-      Z: z
+      "choice": "1",
+      "Z": z,
+      "m": m,
+      "x": x
     };
 
     fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(data)
     })
     .then(response => response.json())
@@ -188,24 +190,26 @@ title: Mass-Luminosity Calculator
 
   document.getElementById('calculate-mass').addEventListener('click', function() {
     const l = parseFloat(document.getElementById('l').value);
-    const x = parseFloat(document.getElementById('x_mass').value);
-    const z = parseFloat(document.getElementById('z_mass').value);
+    const x = parseFloat(document.getElementById('x').value);
+    const z = parseFloat(document.getElementById('z').value);
 
     if (!l || !z) {
-      alert('Please enter log(L) and Metallicity (Z).');
+      alert('Please enter Luminosity (L) and Metallicity (Z).');
       return;
     }
 
     const data = {
-      choice: "2",
-      L: l,
-      x: x,
-      Z: z
+      "choice": "2",
+      "Z": z,
+      "l": l,
+      "x": x
     };
 
     fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(data)
     })
     .then(response => response.json())
@@ -221,10 +225,17 @@ title: Mass-Luminosity Calculator
         }
       }
 
-      if (data.Estimated_Mass) {
+      if (x === 0 && data.Pure_He_Mass) {
         output.innerHTML = `
           ${note}
-          <p style="font-size: 1.1em;">Estimated Mass = ${data.Estimated_Mass} M<sub>⊙</sub></p>
+          <p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>
+        `;
+      } else if (data.Pure_He_Mass) {
+        output.innerHTML = `
+          ${note}
+          <p style="font-size: 1em;">log(M<sub>min</sub>/M<sub>⊙</sub>) = ${data.M_min}</p>
+          <p style="font-size: 1em;">log(M<sub>max</sub>/M<sub>⊙</sub>) = ${data.M_max}</p>
+          <p style="font-size: 1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>
         `;
       } else {
         output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
