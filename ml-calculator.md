@@ -124,7 +124,7 @@ title: Mass-Luminosity Calculator
   <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
     <div style="text-align: justify;">
       <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
-      <p style="font-size: 0.8em;">Enter the stellar luminosity as \log\left(\frac{L}{L_\odot}\right), hydrogen and metal abundances as mass fractions. Pressing the "Calculate Mass" button will provide the minimum mass, maximum mass, and pure-He mass for the given parameters.</p>
+      <p style="font-size: 0.8em;">Enter the stellar luminosity as log\(L/L_\odot\), hydrogen and metal abundances as mass fractions. Pressing the "Calculate Mass" button will provide the minimum mass, maximum mass, and pure-He mass for the given parameters.</p>
     </div>
   </div>
 </div>
