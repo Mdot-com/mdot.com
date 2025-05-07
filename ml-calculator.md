@@ -83,10 +83,10 @@ title: Mass-Luminosity Calculator
           <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.8em;">
           <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
           <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-          <button type="button" id="calculate-luminosity" style="width: 250px; padding: 8px; margin-top: 10px; font-size: 0.9em;">Calculate Luminosity</button>
+          <button type="button" id="calculate-luminosity" style="width: 220px; padding: 8px; margin-top: 10px; font-size: 0.8em;">Calculate Luminosity</button>
         </form>
         <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
-          <p style="font-size: 1em;">Results will appear here.</p>
+          <p style="font-size: 0.85em;">Results will appear here.</p>
         </div>
       </div>
     </div>
