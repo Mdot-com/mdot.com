@@ -74,35 +74,61 @@ title: Mass-Luminosity Calculator
 
   <p>This webpage provides an interactive calculator to predict the minimum, maximum, and pure-He masses and luminosities, including models with such He-core + H-shell structures. Please read the how to use and disclaimers before using the tool. Thank you for reading - enjoy!</p>
 
-  <div style="display: flex; justify-content: center; align-items: flex-start; margin: 30px; gap: 40px;">
-    <!-- Left Box -->
-    <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <h2 style="text-align: center; margin-bottom: 20px; font-size: 1.em;">Luminosity Calculator</h2>
-        <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-          <input type="number" id="m" name="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-          <input type="number" id="x" name="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-          <input type="number" id="z" name="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-          <button type="button" id="calculate-luminosity" style="width: 220px; padding: 8px; margin-top: 10px; font-size: 0.8em;">Calculate Luminosity</button>
-        </form>
-        <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
-          <p style="font-size: 0.85em;">Results will appear here.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right Box -->
-    <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
-      <div style="text-align: justify;">
-        <h2 style="text-align: center; font-size: 1.em;">How to Use</h2>
-        <p style="font-size: 0.8em;">Enter the stellar mass in units of \(M_\odot\), hydrogen and metal abundances as mass fractions. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
-
-        <p style="font-size: 0.8em;"><strong>Disclaimer:</strong></p>
-
-        <p style="font-size: 0.8em;">The range of \( M_\mathrm{tot} \) and surface \( X_\mathrm{H} \) used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
+<div style="display: flex; justify-content: center; align-items: flex-start; margin: 30px; gap: 40px;">
+  <!-- Luminosity Calculator -->
+  <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <h2 style="text-align: center; margin-bottom: 20px; font-size: 1em;">Luminosity Calculator</h2>
+      <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <input type="number" id="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <button type="button" id="calculate-luminosity" style="width: 220px; padding: 8px; margin-top: 10px; font-size: 0.8em;">Calculate Luminosity</button>
+      </form>
+      <div id="luminosity-output" style="margin-top: 20px; text-align: center;">
+        <p style="font-size: 0.85em;">Results will appear here.</p>
       </div>
     </div>
   </div>
+
+  <!-- How to Use -->
+  <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
+    <div style="text-align: justify;">
+      <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
+      <p style="font-size: 0.8em;">Enter the stellar mass in units of \(M_\odot\), hydrogen and metal abundances as mass fractions. Pressing the "Calculate Luminosity" button will provide the minimum luminosity, maximum luminosity, and pure-He luminosity for the given parameters.</p>
+      <p style="font-size: 0.8em;"><strong>Disclaimer:</strong></p>
+      <p style="font-size: 0.8em;">The range of \( M_\mathrm{tot} \) and surface \( X_\mathrm{H} \) used in our stellar structure model grid are: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\). The grid consists of two metallicity values, \(Z = 0.008\) and \(Z = 0.004\), corresponding to LMC- and SMC-like metallicities, respectively. Using \(Z\) values outside of these ranges will result in interpolated or extrapolated results.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Mass Calculator -->
+<div style="display: flex; justify-content: center; align-items: flex-start; margin: 30px; gap: 40px;">
+  <!-- Mass Calculator Box -->
+  <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <h2 style="text-align: center; margin-bottom: 20px; font-size: 1em;">Mass Calculator</h2>
+      <form id="mass-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <input type="number" id="l" step="any" required placeholder="log(Luminosity/L☉)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="x_mass" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="z_mass" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <button type="button" id="calculate-mass" style="width: 220px; padding: 8px; margin-top: 10px; font-size: 0.8em;">Calculate Mass</button>
+      </form>
+      <div id="mass-output" style="margin-top: 20px; text-align: center;">
+        <p style="font-size: 0.85em;">Results will appear here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reused How to Use -->
+  <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
+    <div style="text-align: justify;">
+      <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
+      <p style="font-size: 0.8em;">To estimate mass from luminosity, enter the logarithmic luminosity value (base 10), surface hydrogen abundance, and metallicity. Mass estimation is subject to the same model grid as the luminosity calculator and may be interpolated or extrapolated accordingly.</p>
+    </div>
+  </div>
+</div>
+
 <script>
   document.getElementById('calculate-luminosity').addEventListener('click', function() {
     const m = parseFloat(document.getElementById('m').value);
@@ -115,17 +141,15 @@ title: Mass-Luminosity Calculator
     }
 
     const data = {
-      "choice": "1",
-      "Z": z,
-      "m": m,
-      "x": x
+      choice: "1",
+      m: m,
+      x: x,
+      Z: z
     };
 
     fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
     .then(response => response.json())
@@ -161,6 +185,53 @@ title: Mass-Luminosity Calculator
       document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
     });
   });
+
+  document.getElementById('calculate-mass').addEventListener('click', function() {
+    const l = parseFloat(document.getElementById('l').value);
+    const x = parseFloat(document.getElementById('x_mass').value);
+    const z = parseFloat(document.getElementById('z_mass').value);
+
+    if (!l || !z) {
+      alert('Please enter log(L) and Metallicity (Z).');
+      return;
+    }
+
+    const data = {
+      choice: "2",
+      L: l,
+      x: x,
+      Z: z
+    };
+
+    fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      const output = document.getElementById('mass-output');
+
+      let note = '';
+      if (z !== 0.008 && z !== 0.004) {
+        if (z > 0.004 && z < 0.008) {
+          note = '<p style="font-size: 1em; color: #555;">The masses are interpolated.</p>';
+        } else {
+          note = '<p style="font-size: 1em; color: #555;">The masses are extrapolated.</p>';
+        }
+      }
+
+      if (data.Estimated_Mass) {
+        output.innerHTML = `
+          ${note}
+          <p style="font-size: 1.1em;">Estimated Mass = ${data.Estimated_Mass} M<sub>⊙</sub></p>
+        `;
+      } else {
+        output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+      }
+    })
+    .catch(error => {
+      document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+    });
+  });
 </script>
-
-
