@@ -124,7 +124,7 @@ title: Mass-Luminosity Calculator
   <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: flex; justify-content: flex-start; align-items: flex-start; box-sizing: border-box;">
     <div style="text-align: justify;">
       <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
-      <p style="font-size: 0.8em;">To estimate mass from luminosity, enter the logarithmic luminosity value (base 10), surface hydrogen abundance, and metallicity. Mass estimation is subject to the same model grid as the luminosity calculator and may be interpolated or extrapolated accordingly.</p>
+      <p style="font-size: 0.8em;">To estimate mass from luminosity, enter the log luminosity value, surface hydrogen abundance, and metallicity. Mass estimation is subject to the same model grid as the luminosity calculator and may be interpolated or extrapolated accordingly.</p>
     </div>
   </div>
 </div>
