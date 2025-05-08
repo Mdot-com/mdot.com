@@ -57,7 +57,7 @@ title: Mass-Luminosity Calculator
       1. The model grid covers the range: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\). Using values outside this range will throw out a caution
     </p>
     <p style="font-size: 0.8em; text-align: justify;">
-      2. The structure models underlying the calculator use two metallicity values, Z = 0.008 and 0.004, corresponding roughly to LMC and SMC-like metallicity. Using other Z values will throw out a caution and the results will be interpolated or extrapolated.
+      2. The structure models underlying the calculator use two metallicity values, Z = 0.008 and 0.004, corresponding roughly to LMC and SMC-like metallicity. Using other Z values will throw out a caution and the results will be interpolated or extrapolated. </p>
 
   </div>
 
