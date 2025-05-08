@@ -168,49 +168,71 @@ function attachMassListener() {
     const x = parseFloat(document.getElementById('x_mass').value);
     const z = parseFloat(document.getElementById('z_mass').value);
     if (!l || !z) return alert('Please enter Luminosity (L) and Metallicity (Z).');
+
     fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ choice: '2', L: l, x, Z: z })
     })
     .then(res => res.json())
-.then(data => {
-  const output = document.getElementById('mass-output');
-  let warnings = '';
+    .then(data => {
+      const output = document.getElementById('mass-output');
+      let warnings = '';
+      let result = '';
 
-  if (z !== 0.008 && z !== 0.004) {
-    warnings += (z > 0.004 && z < 0.008)
-      ? '<p style="color: orange;">Warning: The masses are interpolated</p>'
-      : '<p style="color: orange;">Warning: The masses are extrapolated</p>';
-  }
+      if (x + z > 1) {
+        output.innerHTML = '<p style="color: red;">Error: Nice try :) X + Z > 1</p>';
+        return;
+      }
 
-  if (data.Pure_He_Mass) {
-    if (parseFloat(data.Pure_He_Mass) < 1 || parseFloat(data.Pure_He_Mass) > 18 || parseFloat(data.M_min) > 18 || parseFloat(data.M_min) < 1 || parseFloat(data.M_max) > 18 || parseFloat(data.M_max) < 1) {
-      warnings += '<p style="color: orange;">Warning: One of the output masses is outside the tested model range</p>';
-    }
-  }
+      if (z !== 0.008 && z !== 0.004) {
+        warnings += (z > 0.004 && z < 0.008)
+          ? '<p style="color: orange;">Warning: The masses are interpolated</p>'
+          : '<p style="color: orange;">Warning: The masses are extrapolated</p>';
+      }
 
-  if (x > 0.7) {
-    warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit</p>';
-  }
+      if (x > 0.7 && x <= 1) {
+        warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit</p>';
+      }
 
-  if (x === 0 && data.Pure_He_Mass) {
-    output.innerHTML = `<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>${warnings}`;
-  } else if (data.Pure_He_Mass) {
-    output.innerHTML = `
-      <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
-      <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
-      <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>${warnings}`;
-  } else {
-    output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-  }
-})
+      if (x > 1) {
+        output.innerHTML = '<p style="color: red;">Error: Yea, nice try :)</p>';
+        return;
+      }
 
+      if (data.Pure_He_Mass) {
+        const mHe = parseFloat(data.Pure_He_Mass);
+        const mMin = parseFloat(data.M_min);
+        const mMax = parseFloat(data.M_max);
+
+        if (
+          mHe < 1 || mHe > 18 ||
+          mMin < 1 || mMin > 18 ||
+          mMax < 1 || mMax > 18
+        ) {
+          warnings += '<p style="color: orange;">Warning: One of the output masses is outside the tested model range</p>';
+        }
+
+        if (x === 0) {
+          result = `<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>`;
+        } else {
+          result = `
+            <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
+            <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
+            <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>`;
+        }
+
+        output.innerHTML = result + warnings;
+      } else {
+        output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+      }
+    })
     .catch(error => {
       document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
     });
   });
 }
+
 
 
   function renderCalculator(selected) {
