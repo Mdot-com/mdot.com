@@ -111,29 +111,31 @@ title: Mass-Luminosity Calculator
         body: JSON.stringify({ choice: '1', m, x, Z: z })
       })
       .then(res => res.json())
-      .then(data => {
-        const output = document.getElementById('luminosity-output');
-        let note = '';
-        if (z !== 0.008 && z !== 0.004) {
-          note = (z > 0.004 && z < 0.008) ?
-            '<p style="font-size: 1em; color: #555;">The luminosities are interpolated.</p>' :
-            '<p style="font-size: 1em; color: #555;">The luminosities are extrapolated.</p>';
-        }
-        let warnings = '';
-        if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Mass is outside tested model range</p>';
-        if (x > 0.7) warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit</p>';
+.then(data => {
+  const output = document.getElementById('luminosity-output');
+  let warnings = '';
 
-        if (x === 0 && data.Pure_He_Luminosity) {
-          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
-        } else if (data.Pure_He_Luminosity) {
-          output.innerHTML = `${note}
-            <p style="font-size: 1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
-            <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
-            <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
-        } else {
-          output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-        }
-      })
+  if (z !== 0.008 && z !== 0.004) {
+    warnings += (z > 0.004 && z < 0.008)
+      ? '<p style="color: orange;">Warning: The luminosities are interpolated (Z between 0.004 and 0.008)</p>'
+      : '<p style="color: orange;">Warning: The luminosities are extrapolated (Z outside [0.004, 0.008])</p>';
+  }
+
+  if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Mass is outside tested model range</p>';
+  if (x > 0.7) warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit</p>';
+
+  if (x === 0 && data.Pure_He_Luminosity) {
+    output.innerHTML = `<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
+  } else if (data.Pure_He_Luminosity) {
+    output.innerHTML = `
+      <p style="font-size: 1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
+      <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
+      <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
+  } else {
+    output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+  }
+})
+
       .catch(error => {
         document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
       });
@@ -152,37 +154,39 @@ function attachMassListener() {
       body: JSON.stringify({ choice: '2', L: l, x, Z: z })
     })
     .then(res => res.json())
-    .then(data => {
-      const output = document.getElementById('mass-output');
-      let note = '';
-      if (z !== 0.008 && z !== 0.004) {
-        note = (z > 0.004 && z < 0.008) ?
-          '<p style="font-size: 1em; color: #555;">The masses are interpolated.</p>' :
-          '<p style="font-size: 1em; color: #555;">The masses are extrapolated.</p>';
-      }
+.then(data => {
+  const output = document.getElementById('mass-output');
+  let warnings = '';
 
-      let warnings = '';
-      if (data.Pure_He_Mass) {
-        const massVal = Math.pow(10, parseFloat(data.Pure_He_Mass));
-        if (massVal < 1 || massVal > 18) {
-          warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
-        }
-      }
-      if (x > 0.7) {
-        warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit (X ≤ 0.7)</p>';
-      }
+  if (z !== 0.008 && z !== 0.004) {
+    warnings += (z > 0.004 && z < 0.008)
+      ? '<p style="color: orange;">Warning: The masses are interpolated (Z between 0.004 and 0.008)</p>'
+      : '<p style="color: orange;">Warning: The masses are extrapolated (Z outside [0.004, 0.008])</p>';
+  }
 
-      if (x === 0 && data.Pure_He_Mass) {
-        output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>${warnings}`;
-      } else if (data.Pure_He_Mass) {
-        output.innerHTML = `${note}
-          <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
-          <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
-          <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>${warnings}`;
-      } else {
-        output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-      }
-    })
+  if (data.Pure_He_Mass) {
+    const massVal = Math.pow(10, parseFloat(data.Pure_He_Mass));
+    if (massVal < 1 || massVal > 18) {
+      warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
+    }
+  }
+
+  if (x > 0.7) {
+    warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit (X ≤ 0.7)</p>';
+  }
+
+  if (x === 0 && data.Pure_He_Mass) {
+    output.innerHTML = `<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>${warnings}`;
+  } else if (data.Pure_He_Mass) {
+    output.innerHTML = `
+      <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
+      <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
+      <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>${warnings}`;
+  } else {
+    output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+  }
+})
+
     .catch(error => {
       document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
     });
