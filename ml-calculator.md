@@ -99,51 +99,68 @@ title: Mass-Luminosity Calculator
     </div>
   `;
 
-  function attachLuminosityListener() {
-    document.getElementById('calculate-luminosity').addEventListener('click', () => {
-      const m = parseFloat(document.getElementById('m').value);
-      const x = parseFloat(document.getElementById('x').value);
-      const z = parseFloat(document.getElementById('z').value);
-      if (!m || !z) return alert('Please enter Mass (M) and Metallicity (Z).');
-      fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ choice: '1', m, x, Z: z })
-      })
-      .then(res => res.json())
-.then(data => {
-  const output = document.getElementById('luminosity-output');
-  let warnings = '';
+function attachLuminosityListener() {
+  document.getElementById('calculate-luminosity').addEventListener('click', () => {
+    const m = parseFloat(document.getElementById('m').value);
+    const x = parseFloat(document.getElementById('x').value);
+    const z = parseFloat(document.getElementById('z').value);
+    if (!m || !z) return alert('Please enter Mass (M) and Metallicity (Z).');
 
-  if (z !== 0.008 && z !== 0.004) {
-    warnings += (z > 0.004 && z < 0.008)
-      ? '<p style="color: orange;">Warning: The luminosities are interpolated</p>'
-      : '<p style="color: orange;">Warning: The luminosities are extrapolated</p>';
-  }
+    fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ choice: '1', m, x, Z: z })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const output = document.getElementById('luminosity-output');
+      let warnings = '';
+      let result = '';
 
-  if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Input mass is outside the tested model range</p>';
-  if (x > 0.7 && x <= 1) warnings += '<p style="color: orange;">Warning: Input hydrogen mass fraction exceeds tested model limit</p>';
-  if (x > 1) warnings += '<p style="color: orange;">Warning: Yea, nice try :)</p>';
- 
+      if (x + z > 1) {
+        output.innerHTML = '<p style="color: red;">Error: Nice try :) X + Z > 1</p>';
+        return;
+      }
 
-  if (x === 0 && data.Pure_He_Luminosity) {
-    output.innerHTML = `<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
-  } else if (data.Pure_He_Luminosity) {
-    output.innerHTML = `
-      <p style="font-size: 1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
-      <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
-      <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
-  }  
-  else {
-    output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-  }
-})
+      if (z !== 0.008 && z !== 0.004) {
+        warnings += (z > 0.004 && z < 0.008)
+          ? '<p style="color: orange;">Warning: The luminosities are interpolated</p>'
+          : '<p style="color: orange;">Warning: The luminosities are extrapolated</p>';
+      }
 
-      .catch(error => {
-        document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
-      });
+      if (m < 1 || m > 18) {
+        warnings += '<p style="color: orange;">Warning: Input mass is outside the tested model range</p>';
+      }
+
+      if (x > 0.7 && x <= 1) {
+        warnings += '<p style="color: orange;">Warning: Input hydrogen mass fraction exceeds tested model limit</p>';
+      }
+
+      if (x > 1) {
+        output.innerHTML = '<p style="color: red;">Error: Yea, nice try :)</p>';
+        return;
+      }
+
+      if (x === 0 && data.Pure_He_Luminosity) {
+        result = `<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
+      } else if (data.Pure_He_Luminosity) {
+        result = `
+          <p style="font-size: 1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
+          <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
+          <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
+      } else {
+        output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+        return;
+      }
+
+      output.innerHTML = result + warnings;
+    })
+    .catch(error => {
+      document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
     });
-  }
+  });
+}
+
 
 function attachMassListener() {
   document.getElementById('calculate-mass').addEventListener('click', () => {
