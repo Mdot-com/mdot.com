@@ -78,9 +78,9 @@ title: Mass-Luminosity Calculator
   const luminosityHTML = `
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 20px;">
       <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-        <input type="number" id="m" step="any" required placeholder="Mass (M)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-        <input type="number" id="x" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-        <input type="number" id="z" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="m" step="any" required placeholder="Mass, M/M☉" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="x" step="any" required placeholder="Hydrogen Mass Fraction, X" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="z" step="any" required placeholder="Metallicity, Z" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <button type="button" id="calculate-luminosity" style="width: 220px; padding: 8px; font-size: 0.8em;">Calculate Luminosity</button>
       </form>
       <div id="luminosity-output" style="margin-top: 20px; text-align: center; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f5f5f5;"><p style="font-size: 0.85em;">Results will appear here.</p></div>
@@ -90,9 +90,9 @@ title: Mass-Luminosity Calculator
   const massHTML = `
     <div style="width: 500px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 20px;">
       <form id="mass-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-        <input type="number" id="l" step="any" required placeholder="Luminosity log(L/L☉)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-        <input type="number" id="x_mass" step="any" required placeholder="Hydrogen Mass Fraction (X)" style="width: 250px; padding: 8px; font-size: 0.8em;">
-        <input type="number" id="z_mass" step="any" required placeholder="Metallicity (Z)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="l" step="any" required placeholder="Luminosity, log(L/L☉)" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="x_mass" step="any" required placeholder="Hydrogen Mass Fraction, X" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="z_mass" step="any" required placeholder="Metallicity, Z" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <button type="button" id="calculate-mass" style="width: 220px; padding: 8px; font-size: 0.8em;">Calculate Mass</button>
       </form>
       <div id="mass-output" style="margin-top: 20px; text-align: center; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f5f5f5;"><p style="font-size: 0.85em;">Results will appear here.</p></div>
@@ -120,8 +120,8 @@ title: Mass-Luminosity Calculator
             '<p style="font-size: 1em; color: #555;">The luminosities are extrapolated.</p>';
         }
         let warnings = '';
-        if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Mass is outside tested model range [1–18]</p>';
-        if (x > 0.7) warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit (X ≤ 0.7)</p>';
+        if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Mass is outside tested model range</p>';
+        if (x > 0.7) warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit</p>';
 
         if (x === 0 && data.Pure_He_Luminosity) {
           output.innerHTML = `${note}<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
@@ -140,51 +140,55 @@ title: Mass-Luminosity Calculator
     });
   }
 
-  function attachMassListener() {
-    document.getElementById('calculate-mass').addEventListener('click', () => {
-      const l = parseFloat(document.getElementById('l').value);
-      const x = parseFloat(document.getElementById('x_mass').value);
-      const z = parseFloat(document.getElementById('z_mass').value);
-      if (!l || !z) return alert('Please enter Luminosity (L) and Metallicity (Z).');
-      fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ choice: '2', L: l, x, Z: z })
-      })
-      .then(res => res.json())
-      .then(data => {
-        const output = document.getElementById('mass-output');
-        let note = '';
-        if (z !== 0.008 && z !== 0.004) {
-          note = (z > 0.004 && z < 0.008) ?
-            '<p style="font-size: 1em; color: #555;">The masses are interpolated.</p>' :
-            '<p style="font-size: 1em; color: #555;">The masses are extrapolated.</p>';
-        }
+function attachMassListener() {
+  document.getElementById('calculate-mass').addEventListener('click', () => {
+    const l = parseFloat(document.getElementById('l').value);
+    const x = parseFloat(document.getElementById('x_mass').value);
+    const z = parseFloat(document.getElementById('z_mass').value);
+    if (!l || !z) return alert('Please enter Luminosity (L) and Metallicity (Z).');
+    fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ choice: '2', L: l, x, Z: z })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const output = document.getElementById('mass-output');
+      let note = '';
+      if (z !== 0.008 && z !== 0.004) {
+        note = (z > 0.004 && z < 0.008) ?
+          '<p style="font-size: 1em; color: #555;">The masses are interpolated.</p>' :
+          '<p style="font-size: 1em; color: #555;">The masses are extrapolated.</p>';
+      }
 
-        let warnings = '';
-        if (data.Pure_He_Mass) {
-          const massVal = Math.pow(10, parseFloat(data.Pure_He_Mass));
-          if (massVal < 1 || massVal > 18) {
-            warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
-          }
+      let warnings = '';
+      if (data.Pure_He_Mass) {
+        const massVal = Math.pow(10, parseFloat(data.Pure_He_Mass));
+        if (massVal < 1 || massVal > 18) {
+          warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
         }
+      }
+      if (x > 0.7) {
+        warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit (X ≤ 0.7)</p>';
+      }
 
-        if (x === 0 && data.Pure_He_Mass) {
-          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>${warnings}`;
-        } else if (data.Pure_He_Mass) {
-          output.innerHTML = `${note}
-            <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
-            <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
-            <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>${warnings}`;
-        } else {
-          output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-        }
-      })
-      .catch(error => {
-        document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
-      });
+      if (x === 0 && data.Pure_He_Mass) {
+        output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>${warnings}`;
+      } else if (data.Pure_He_Mass) {
+        output.innerHTML = `${note}
+          <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
+          <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
+          <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>${warnings}`;
+      } else {
+        output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+      }
+    })
+    .catch(error => {
+      document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
     });
-  }
+  });
+}
+
 
   function renderCalculator(selected) {
     calculatorContainer.innerHTML = selected === 'luminosity' ? luminosityHTML : massHTML;
