@@ -1,4 +1,3 @@
-
 ---
 layout: default
 title: Mass-Luminosity Calculator
@@ -67,6 +66,27 @@ title: Mass-Luminosity Calculator
   </select>
 
   <!-- Dynamic Calculator Container -->
+  <div id="calculator-container"></div>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 30px;">
+  <div style="width: 600px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
+    <p style="font-size: 0.8em; text-align: justify;">
+      Enter either stellar mass or luminosity, hydrogen and metal abundances as mass fractions. Selecting an option from the dropdown below will load the appropriate calculator. Pressing the corresponding button will provide the minimum, maximum, and pure-He values for the given parameters.
+    </p>
+    <p style="font-size: 0.8em;"><strong>Disclaimer:</strong></p>
+    <p style="font-size: 0.8em; text-align: justify;">
+      The model grid covers: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\) with two metallicity values: \(Z = 0.008\) and \(Z = 0.004\), for LMC and SMC, respectively. Using other Z values results in interpolation or extrapolation.
+    </p>
+  </div>
+
+  <select id="calculator-type" style="width: 250px; padding: 8px; font-size: 0.9em;">
+    <option value="" disabled selected>Select Calculator</option>
+    <option value="luminosity">Luminosity Calculator</option>
+    <option value="mass">Mass Calculator</option>
+  </select>
+
   <div id="calculator-container"></div>
 </div>
 
@@ -171,21 +191,25 @@ title: Mass-Luminosity Calculator
     });
   }
 
-  document.getElementById('calculator-type').addEventListener('change', function () {
-    const selected = this.value;
+  function renderCalculator(selected) {
     calculatorContainer.innerHTML = selected === 'luminosity' ? luminosityHTML : massHTML;
     if (selected === 'luminosity') attachLuminosityListener();
     if (selected === 'mass') attachMassListener();
+  }
+
+  const calculatorTypeSelect = document.getElementById('calculator-type');
+
+  calculatorTypeSelect.addEventListener('change', function () {
+    const selected = this.value;
+    localStorage.setItem('selectedCalculator', selected);
+    renderCalculator(selected);
   });
 
   window.addEventListener('DOMContentLoaded', () => {
-    const selected = document.getElementById('calculator-type').value;
-    if (selected === 'luminosity') {
-      calculatorContainer.innerHTML = luminosityHTML;
-      attachLuminosityListener();
-    } else if (selected === 'mass') {
-      calculatorContainer.innerHTML = massHTML;
-      attachMassListener();
+    const saved = localStorage.getItem('selectedCalculator');
+    if (saved) {
+      calculatorTypeSelect.value = saved;
+      renderCalculator(saved);
     }
   });
 </script>
