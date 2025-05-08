@@ -57,8 +57,8 @@ title: Mass-Luminosity Calculator
       1. The model grid covers the range: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\). Using values outside this range will throw out a caution
     </p>
     <p style="font-size: 0.8em; text-align: justify;">
-      2. The structure models underlying the calculator use two metallicity values, Z = 0.008 and 0.004, corresponding roughly to LMC and SMC-like metallicity. Using other Z values will throw out a caution and the results will be interpolated or extrapolated. </p>
-
+      2. The structure models underlying the calculator use two metallicity values, Z = 0.008 and 0.004, corresponding roughly to LMC and SMC-like metallicity. Using other Z values will throw out a caution and the results will be interpolated or extrapolated.
+    </p>
   </div>
 
   <!-- Calculator Type Dropdown -->
@@ -71,8 +71,6 @@ title: Mass-Luminosity Calculator
   <!-- Dynamic Calculator Container -->
   <div id="calculator-container"></div>
 </div>
-
-
 
 <script>
   let calculatorContainer = document.getElementById('calculator-container');
@@ -121,13 +119,17 @@ title: Mass-Luminosity Calculator
             '<p style="font-size: 1em; color: #555;">The luminosities are interpolated.</p>' :
             '<p style="font-size: 1em; color: #555;">The luminosities are extrapolated.</p>';
         }
+        let warnings = '';
+        if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Mass is outside tested model range [1–18]</p>';
+        if (x > 0.7) warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit (X ≤ 0.7)</p>';
+
         if (x === 0 && data.Pure_He_Luminosity) {
-          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
+          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
         } else if (data.Pure_He_Luminosity) {
           output.innerHTML = `${note}
             <p style="font-size: 1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
             <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
-            <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
+            <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
         } else {
           output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
         }
@@ -158,13 +160,22 @@ title: Mass-Luminosity Calculator
             '<p style="font-size: 1em; color: #555;">The masses are interpolated.</p>' :
             '<p style="font-size: 1em; color: #555;">The masses are extrapolated.</p>';
         }
+
+        let warnings = '';
+        if (data.Pure_He_Mass) {
+          const massVal = Math.pow(10, parseFloat(data.Pure_He_Mass));
+          if (massVal < 1 || massVal > 18) {
+            warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
+          }
+        }
+
         if (x === 0 && data.Pure_He_Mass) {
-          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>`;
+          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>${warnings}`;
         } else if (data.Pure_He_Mass) {
           output.innerHTML = `${note}
             <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
             <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
-            <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>`;
+            <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>${warnings}`;
         } else {
           output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
         }
