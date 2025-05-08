@@ -118,7 +118,7 @@ function attachLuminosityListener() {
       let result = '';
 
       if (x + z > 1) {
-        output.innerHTML = '<p style="color: red;">Error: Nice try :) X + Z > 1</p>';
+        output.innerHTML = '<p style="color: red;">Yea, nice try :) X + Z > 1</p>';
         return;
       }
 
@@ -136,10 +136,6 @@ function attachLuminosityListener() {
         warnings += '<p style="color: orange;">Warning: Input hydrogen mass fraction exceeds tested model limit</p>';
       }
 
-      if (x > 1) {
-        output.innerHTML = '<p style="color: red;">Error: Yea, nice try :)</p>';
-        return;
-      }
 
       if (x === 0 && data.Pure_He_Luminosity) {
         result = `<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
@@ -181,7 +177,7 @@ function attachMassListener() {
       let result = '';
 
       if (x + z > 1) {
-        output.innerHTML = '<p style="color: red;">Error: Nice try :) X + Z > 1</p>';
+        output.innerHTML = '<p style="color: red;">Yea nice try :) X + Z > 1</p>';
         return;
       }
 
