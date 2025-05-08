@@ -133,7 +133,7 @@ title: Mass-Luminosity Calculator
       <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
       <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
   }  else if (data.Pure_He_Luminosity && x > 1) {
-     warnings += '<p style="color: orange;">Warning: Yea, nice try :)</p>';
+    <p style="font-size: 1em;color: orange;">Warning: Yea, nice try :)</p>;
   }
   else {
     output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
