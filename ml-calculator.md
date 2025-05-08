@@ -165,8 +165,7 @@ function attachMassListener() {
   }
 
   if (data.Pure_He_Mass) {
-    const massVal = Math.pow(10, parseFloat(data.Pure_He_Mass));
-    if (massVal < 1 || massVal > 18) {
+    if (parseFloat(data.Pure_He_Mass) < 1 || parseFloat(data.Pure_He_Mass) > 18) {
       warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
     }
   }
