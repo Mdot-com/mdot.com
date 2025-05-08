@@ -159,9 +159,9 @@ title: Mass-Luminosity Calculator
           output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>`;
         } else if (data.Pure_He_Mass) {
           output.innerHTML = `${note}
-            <p style="font-size: 1em;">log(M<sub>min</sub>/M<sub>⊙</sub>) = ${data.M_min}</p>
-            <p style="font-size: 1em;">log(M<sub>max</sub>/M<sub>⊙</sub>) = ${data.M_max}</p>
-            <p style="font-size: 1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>`;
+            <p style="font-size: 1em;">M<sub>min</sub>/M<sub>⊙</sub> = ${data.M_min}</p>
+            <p style="font-size: 1em;">M<sub>max</sub>/M<sub>⊙</sub> = ${data.M_max}</p>
+            <p style="font-size: 1em;">M<sub>He</sub>/M<sub>⊙</sub> = ${data.Pure_He_Mass}</p>`;
         } else {
           output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
         }
