@@ -172,7 +172,7 @@ function attachMassListener() {
   }
 
   if (x > 0.7) {
-    warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit (X ≤ 0.7)</p>';
+    warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit</p>';
   }
 
   if (x === 0 && data.Pure_He_Mass) {
