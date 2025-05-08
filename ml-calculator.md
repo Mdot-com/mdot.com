@@ -117,12 +117,13 @@ title: Mass-Luminosity Calculator
 
   if (z !== 0.008 && z !== 0.004) {
     warnings += (z > 0.004 && z < 0.008)
-      ? '<p style="color: orange;">Warning: The luminosities are interpolated (Z between 0.004 and 0.008)</p>'
-      : '<p style="color: orange;">Warning: The luminosities are extrapolated (Z outside [0.004, 0.008])</p>';
+      ? '<p style="color: orange;">Warning: The luminosities are interpolated</p>'
+      : '<p style="color: orange;">Warning: The luminosities are extrapolated</p>';
   }
 
-  if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Mass is outside tested model range</p>';
-  if (x > 0.7) warnings += '<p style="color: orange;">Warning: Hydrogen mass fraction exceeds tested model limit</p>';
+  if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Input mass is outside the tested model range</p>';
+  if (x > 0.7) warnings += '<p style="color: orange;">Warning: Input hydrogen mass fraction exceeds tested model limit</p>';
+  if (x > 1) warnings += '<p style="color: orange;">Warning: Yes, nice try :)</p>';
 
   if (x === 0 && data.Pure_He_Luminosity) {
     output.innerHTML = `<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>${warnings}`;
@@ -160,13 +161,13 @@ function attachMassListener() {
 
   if (z !== 0.008 && z !== 0.004) {
     warnings += (z > 0.004 && z < 0.008)
-      ? '<p style="color: orange;">Warning: The masses are interpolated (Z between 0.004 and 0.008)</p>'
-      : '<p style="color: orange;">Warning: The masses are extrapolated (Z outside [0.004, 0.008])</p>';
+      ? '<p style="color: orange;">Warning: The masses are interpolated</p>'
+      : '<p style="color: orange;">Warning: The masses are extrapolated</p>';
   }
 
   if (data.Pure_He_Mass) {
     if (parseFloat(data.Pure_He_Mass) < 1 || parseFloat(data.Pure_He_Mass) > 18 || parseFloat(data.M_min) > 18 || parseFloat(data.M_min) < 1 || parseFloat(data.M_max) > 18 || parseFloat(data.M_max) < 1) {
-      warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
+      warnings += '<p style="color: orange;">Warning: One of the output masses is outside the tested model range</p>';
     }
   }
 
