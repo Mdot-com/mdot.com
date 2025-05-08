@@ -122,7 +122,7 @@ title: Mass-Luminosity Calculator
   }
 
   if (m < 1 || m > 18) warnings += '<p style="color: orange;">Warning: Input mass is outside the tested model range</p>';
-  if (x > 0.7) warnings += '<p style="color: orange;">Warning: Input hydrogen mass fraction exceeds tested model limit</p>';
+  if (x > 0.7 && x <= 1) warnings += '<p style="color: orange;">Warning: Input hydrogen mass fraction exceeds tested model limit</p>';
   if (x > 1) warnings += '<p style="color: orange;">Warning: Yea, nice try :)</p>';
 
   if (x === 0 && data.Pure_He_Luminosity) {
