@@ -130,95 +130,88 @@ title: Mass-Luminosity Calculator
     </div>
   `;
 
+  function attachLuminosityListener() {
+    document.getElementById('calculate-luminosity').addEventListener('click', () => {
+      const m = parseFloat(document.getElementById('m').value);
+      const x = parseFloat(document.getElementById('x').value);
+      const z = parseFloat(document.getElementById('z').value);
+      if (!m || !z) return alert('Please enter Mass (M) and Metallicity (Z).');
+      fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ choice: '1', m, x, Z: z })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const output = document.getElementById('luminosity-output');
+        let note = '';
+        if (z !== 0.008 && z !== 0.004) {
+          note = (z > 0.004 && z < 0.008) ?
+            '<p style="font-size: 1em; color: #555;">The luminosities are interpolated.</p>' :
+            '<p style="font-size: 1em; color: #555;">The luminosities are extrapolated.</p>';
+        }
+        if (x === 0 && data.Pure_He_Luminosity) {
+          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
+        } else if (data.Pure_He_Luminosity) {
+          output.innerHTML = `${note}
+            <p style="font-size: 1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
+            <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
+            <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
+        } else {
+          output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+        }
+      })
+      .catch(error => {
+        document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+      });
+    });
+  }
+
+  function attachMassListener() {
+    document.getElementById('calculate-mass').addEventListener('click', () => {
+      const l = parseFloat(document.getElementById('l').value);
+      const x = parseFloat(document.getElementById('x_mass').value);
+      const z = parseFloat(document.getElementById('z_mass').value);
+      if (!l || !z) return alert('Please enter Luminosity (L) and Metallicity (Z).');
+      fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ choice: '2', L: l, x, Z: z })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const output = document.getElementById('mass-output');
+        let note = '';
+        if (z !== 0.008 && z !== 0.004) {
+          note = (z > 0.004 && z < 0.008) ?
+            '<p style="font-size: 1em; color: #555;">The masses are interpolated.</p>' :
+            '<p style="font-size: 1em; color: #555;">The masses are extrapolated.</p>';
+        }
+        if (x === 0 && data.Pure_He_Mass) {
+          output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>`;
+        } else if (data.Pure_He_Mass) {
+          output.innerHTML = `${note}
+            <p style="font-size: 1em;">log(M<sub>min</sub>/M<sub>⊙</sub>) = ${data.M_min}</p>
+            <p style="font-size: 1em;">log(M<sub>max</sub>/M<sub>⊙</sub>) = ${data.M_max}</p>
+            <p style="font-size: 1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>`;
+        } else {
+          output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
+        }
+      })
+      .catch(error => {
+        document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+      });
+    });
+  }
+
   document.getElementById('calculator-type').addEventListener('change', function () {
     const selected = this.value;
     calculatorContainer.innerHTML = selected === 'luminosity' ? luminosityHTML : massHTML;
-
-    if (selected === 'luminosity') {
-      document.getElementById('calculate-luminosity').addEventListener('click', () => {
-        const m = parseFloat(document.getElementById('m').value);
-        const x = parseFloat(document.getElementById('x').value);
-        const z = parseFloat(document.getElementById('z').value);
-        if (!m || !z) {
-          alert('Please enter Mass (M) and Metallicity (Z).');
-          return;
-        }
-        const data = { choice: "1", Z: z, m: m, x: x };
-        fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-          const output = document.getElementById('luminosity-output');
-          let note = '';
-          if (z !== 0.008 && z !== 0.004) {
-            if (z > 0.004 && z < 0.008) note = '<p style="font-size: 1em; color: #555;">The luminosities are interpolated.</p>';
-            else note = '<p style="font-size: 1em; color: #555;">The luminosities are extrapolated.</p>';
-          }
-          if (x === 0 && data.Pure_He_Luminosity) {
-            output.innerHTML = `${note}<p style="font-size: 1.1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>`;
-          } else if (data.Pure_He_Luminosity) {
-            output.innerHTML = `
-              ${note}
-              <p style="font-size: 1em;">log(L<sub>min</sub>/L<sub>⊙</sub>) = ${data.L_min}</p>
-              <p style="font-size: 1em;">log(L<sub>max</sub>/L<sub>⊙</sub>) = ${data.L_max}</p>
-              <p style="font-size: 1em;">log(L<sub>He</sub>/L<sub>⊙</sub>) = ${data.Pure_He_Luminosity}</p>
-            `;
-          } else {
-            output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-          }
-        })
-        .catch(error => {
-          document.getElementById('luminosity-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
-        });
-      });
-    }
-
-    if (selected === 'mass') {
-      document.getElementById('calculate-mass').addEventListener('click', () => {
-        const l = parseFloat(document.getElementById('l').value);
-        const x = parseFloat(document.getElementById('x_mass').value);
-        const z = parseFloat(document.getElementById('z_mass').value);
-        if (!l || !z) {
-          alert('Please enter Luminosity (L) and Metallicity (Z).');
-          return;
-        }
-        const data = { choice: "2", Z: z, L: l, x: x };
-        fetch('https://nnv5wacde8.execute-api.eu-north-1.amazonaws.com/ML-calc', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-          const output = document.getElementById('mass-output');
-          let note = '';
-          if (z !== 0.008 && z !== 0.004) {
-            if (z > 0.004 && z < 0.008) note = '<p style="font-size: 1em; color: #555;">The masses are interpolated.</p>';
-            else note = '<p style="font-size: 1em; color: #555;">The masses are extrapolated.</p>';
-          }
-          if (x === 0 && data.Pure_He_Mass) {
-            output.innerHTML = `${note}<p style="font-size: 1.1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>`;
-          } else if (data.Pure_He_Mass) {
-            output.innerHTML = `
-              ${note}
-              <p style="font-size: 1em;">log(M<sub>min</sub>/M<sub>⊙</sub>) = ${data.M_min}</p>
-              <p style="font-size: 1em;">log(M<sub>max</sub>/M<sub>⊙</sub>) = ${data.M_max}</p>
-              <p style="font-size: 1em;">log(M<sub>He</sub>/M<sub>⊙</sub>) = ${data.Pure_He_Mass}</p>
-            `;
-          } else {
-            output.innerHTML = '<p style="color: red;">Error: Missing results</p>';
-          }
-        })
-        .catch(error => {
-          document.getElementById('mass-output').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
-        });
-      });
-    }
+    if (selected === 'luminosity') attachLuminosityListener();
+    if (selected === 'mass') attachMassListener();
   });
 </script>
+
 
 
 <div id="intro-text">
