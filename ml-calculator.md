@@ -165,7 +165,7 @@ function attachMassListener() {
   }
 
   if (data.Pure_He_Mass) {
-    if (parseFloat(data.Pure_He_Mass) < 1 || parseFloat(data.Pure_He_Mass) > 18) {
+    if (parseFloat(data.Pure_He_Mass) < 1 || parseFloat(data.Pure_He_Mass) > 18 || parseFloat(data.M_min) > 18 || parseFloat(data.M_min) < 1 || parseFloat(data.M_max) > 18 || parseFloat(data.M_max) < 1) {
       warnings += '<p style="color: orange;">Warning: Output mass is outside tested model range [1–18]</p>';
     }
   }
