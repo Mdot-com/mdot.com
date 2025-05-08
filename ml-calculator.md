@@ -50,12 +50,15 @@ title: Mass-Luminosity Calculator
   <div style="width: 600px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
     <p style="font-size: 0.8em; text-align: justify;">
-      Enter either stellar mass or luminosity, hydrogen and metal abundances as mass fractions. Selecting an option from the dropdown below will load the appropriate calculator. Pressing the corresponding button will provide the minimum, maximum, and pure-He values for the given parameters.
+      Please select the required calculator and enter either stellar mass or luminosity, hydrogen and metal abundances as mass fractions. Selecting an option from the dropdown below will load the appropriate calculator. Pressing the calculate button will provide the minimum, maximum, and pure-He values for the user input parameters.
     </p>
     <p style="font-size: 0.8em;"><strong>Disclaimer:</strong></p>
     <p style="font-size: 0.8em; text-align: justify;">
-      The model grid covers: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\) with two metallicity values: \(Z = 0.008\) and \(Z = 0.004\), for LMC and SMC, respectively. Using other Z values results in interpolation or extrapolation.
+      1. The model grid covers the range: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\). Using values outside this range will throw out a caution
     </p>
+    <p style="font-size: 0.8em; text-align: justify;">
+      2. The structure models underlying the calculator use two metallicity values, Z = 0.008 and 0.004, corresponding roughly to LMC and SMC-like metallicity. Using other Z values will throw out a caution and the results will be interpolated or extrapolated.
+
   </div>
 
   <!-- Calculator Type Dropdown -->
