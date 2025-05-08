@@ -1,3 +1,40 @@
+Very massive stars (VMSs) have been observed in young massive clusters in the Local Universe. Their spectra are dominated by strong emission lines, classifying them as WNh stars, and indicating powerful stellar winds capable of driving chemical evolution. In the early Universe, where VMSs may have been more prevalent, lower metal content results in weaker winds, potentially allowing VMSs to form intermediate-mass black holes or trigger pair-instability supernovae (PISNe) toward the end of their lifecycle. Investigating the nature of stellar winds in VMSs across different metallicity (Z) environments is crucial for understanding how these stars evolve and die.
+
+We use the Potsdam Wolf-Rayet (PoWR) stellar atmosphere code to perform detailed radiative transfer calculations in the co-moving frame, coupled with hydrodynamics, to model the atmospheres of VMSs. Unlike beta-law methods, PoWR’s hydrodynamic capabilities allow us to calculate both velocity profiles and mass-loss rates. We fit the UV and optical spectra of specific WNh stars in the LMC, focusing on R136a1 and the R144 system—a binary of two WNh stars with well-established dynamical masses. By employing a hydro-dynamic model, we predict mass-loss rates that are consistent with the wind-driving of VMSs. Additionally, we create a grid of PoWR hydro-models to explore the impact of Z on the transition from optically thin to optically thick winds.
+
+Informed by these hydrodynamic models and the Monte Carlo models by Vink et al. (2011), we develop a new mass-loss framework within the 1D stellar evolution code MESA, specifically tailored to study VMS evolution. I will outline the evolutionary characteristics, chemical yields, and ultimate fates of VMSs, emphasizing the critical role of stellar winds in determining the metallicity threshold for PISNe occurrence.
+
+
+
+
+
+
+ Ly edge for Hydrogen models       911.55    911.56             48.49
+ Ly edge for Helium models         911.33    911.35             48.49
+ He I edge for Helium models       504.30    504.26             45.69
+ He II edge for Helium models      227.85    227.84             36.43
+
+
+
+
+Title: How to weigh a star? A novel method using stellar atmospheres
+
+Abstract: The mass of a star is the single most important factor determining its fate - whether it ends its life as a white dwarf, explodes as a spectacular supernova, or silently collapses into a black hole. However, inferring the mass of stars located light-years away is a non-trivial problem in astrophysics. In this talk, I will introduce general stellar astrophysics, applying the fundamentals of Newtonian mechanics, quantum physics, and radiative transfer to explore the various methods used to infer mass of a star.
+
+I will then present a completely new approach to estimating the mass of the most massive stars in the present day Universe. These Very Massive Stars (VMSs), born with masses more than 100 times that of our own Sun, exhibit strong stellar outflows driven by radiation pressure on metal ions. The strength of these outflows contain information about the mass of the star which we extract using detailed stellar atmosphere modelling. I will explain why this new method specifically addresses the problems faced by previous mass estimation methods, and use it to estimate the mass of the most massive star in the local Galactic neighbourhood, R136a1, located in the Large Magellanic Cloud. 
+
+
+
+Euclid is a ESA mission launched in 2023 which began survey operations in 2024 using red visible and near infrared observations to explore dark matter and dark energy in order to probe the structure and expansion of the universe. In addition to this, Euclid has a number of secondary scientific goals which can be achieved with its impressive depth, resolution, and wavelength coverage; this includes the study of transient objects.
+
+The first quick data release from Euclid was published in March of 2025 which included ~63 sq. deg of sky coverage over the Euclid Deep Fields. I will present the results from this data used to study known transient objects serendipitously observed by Euclid. I will go on to discuss the importance of these results in demonstrating Euclid’s capability in the transient space. I will conclude by discussing the future of transient science with Euclid including opportunities to coordinate with other transient searches.
+
+
+
+
+
+
+
 
 ---
 layout: default
@@ -67,6 +104,27 @@ title: Mass-Luminosity Calculator
   </select>
 
   <!-- Dynamic Calculator Container -->
+  <div id="calculator-container"></div>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 30px;">
+  <div style="width: 600px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; font-size: 1em;">How to Use</h2>
+    <p style="font-size: 0.8em; text-align: justify;">
+      Enter either stellar mass or luminosity, hydrogen and metal abundances as mass fractions. Selecting an option from the dropdown below will load the appropriate calculator. Pressing the corresponding button will provide the minimum, maximum, and pure-He values for the given parameters.
+    </p>
+    <p style="font-size: 0.8em;"><strong>Disclaimer:</strong></p>
+    <p style="font-size: 0.8em; text-align: justify;">
+      The model grid covers: \(1 \leq M_{\text{tot}} \leq 18\) and \(0 \leq X_\mathrm{H} \leq 0.7\) with two metallicity values: \(Z = 0.008\) and \(Z = 0.004\), for LMC and SMC, respectively. Using other Z values results in interpolation or extrapolation.
+    </p>
+  </div>
+
+  <select id="calculator-type" style="width: 250px; padding: 8px; font-size: 0.9em;">
+    <option value="" disabled selected>Select Calculator</option>
+    <option value="luminosity">Luminosity Calculator</option>
+    <option value="mass">Mass Calculator</option>
+  </select>
+
   <div id="calculator-container"></div>
 </div>
 
@@ -177,19 +235,7 @@ title: Mass-Luminosity Calculator
     if (selected === 'luminosity') attachLuminosityListener();
     if (selected === 'mass') attachMassListener();
   });
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const selected = document.getElementById('calculator-type').value;
-    if (selected === 'luminosity') {
-      calculatorContainer.innerHTML = luminosityHTML;
-      attachLuminosityListener();
-    } else if (selected === 'mass') {
-      calculatorContainer.innerHTML = massHTML;
-      attachMassListener();
-    }
-  });
 </script>
-
 
 
 
