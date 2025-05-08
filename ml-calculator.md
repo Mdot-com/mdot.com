@@ -191,13 +191,29 @@ title: Mass-Luminosity Calculator
     });
   }
 
-  document.getElementById('calculator-type').addEventListener('change', function () {
-    const selected = this.value;
+  function renderCalculator(selected) {
     calculatorContainer.innerHTML = selected === 'luminosity' ? luminosityHTML : massHTML;
     if (selected === 'luminosity') attachLuminosityListener();
     if (selected === 'mass') attachMassListener();
+  }
+
+  const calculatorTypeSelect = document.getElementById('calculator-type');
+
+  calculatorTypeSelect.addEventListener('change', function () {
+    const selected = this.value;
+    localStorage.setItem('selectedCalculator', selected);
+    renderCalculator(selected);
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('selectedCalculator');
+    if (saved) {
+      calculatorTypeSelect.value = saved;
+      renderCalculator(saved);
+    }
   });
 </script>
+
 
 
 
