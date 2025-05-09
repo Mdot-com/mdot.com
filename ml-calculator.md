@@ -80,7 +80,7 @@ title: Mass-Luminosity Calculator
       <form id="luminosity-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
         <input type="number" id="m" step="any" required placeholder="Mass, M/M☉" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <input type="number" id="x" step="any" required placeholder="Hydrogen Mass Fraction, X" style="width: 250px; padding: 8px; font-size: 0.8em;">
-        <input type="number" id="z" step="any" required placeholder="Metallicity, Z" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="z" step="any" required placeholder="Metal mass fraction, Z" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <button type="button" id="calculate-luminosity" style="width: 220px; padding: 8px; font-size: 0.8em;">Calculate Luminosity</button>
       </form>
       <div id="luminosity-output" style="margin-top: 20px; text-align: center; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f5f5f5;"><p style="font-size: 0.85em;">Results will appear here.</p></div>
@@ -92,7 +92,7 @@ title: Mass-Luminosity Calculator
       <form id="mass-form" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
         <input type="number" id="l" step="any" required placeholder="Luminosity, log(L/L☉)" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <input type="number" id="x_mass" step="any" required placeholder="Hydrogen Mass Fraction, X" style="width: 250px; padding: 8px; font-size: 0.8em;">
-        <input type="number" id="z_mass" step="any" required placeholder="Metallicity, Z" style="width: 250px; padding: 8px; font-size: 0.8em;">
+        <input type="number" id="z_mass" step="any" required placeholder="Metal mass fraction, Z" style="width: 250px; padding: 8px; font-size: 0.8em;">
         <button type="button" id="calculate-mass" style="width: 220px; padding: 8px; font-size: 0.8em;">Calculate Mass</button>
       </form>
       <div id="mass-output" style="margin-top: 20px; text-align: center; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; background-color: #f5f5f5;"><p style="font-size: 0.85em;">Results will appear here.</p></div>
@@ -206,7 +206,7 @@ function attachMassListener() {
           mMin < 1 || mMin > 18 ||
           mMax < 1 || mMax > 18
         ) {
-          warnings += '<p style="color: orange;">Warning: One of the output masses is outside the tested model range</p>';
+          warnings += '<p style="color: orange;">Warning: One (or more) of the output masses is outside the tested model range</p>';
         }
 
         if (x === 0) {
