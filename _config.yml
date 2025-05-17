@@ -9,9 +9,9 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Dr. Gautham Sabhahit"
+title                    : ""
 title_separator          : "-"
-name                     : &name "Gautham Sabhahit"
+name                     : &name "Massive Star Group at Amragh Observatory"
 description              : &description "personal description"
 url                      : https://mdot-com.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
