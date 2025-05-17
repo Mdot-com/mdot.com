@@ -16,9 +16,25 @@ layout: default
   {% endunless %}
 {% endif %}
 
+<style>
+  #main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .archive {
+    max-width: 800px;
+    width: 100%;
+    text-align: justify;
+  }
+  .page__title {
+    text-align: center;
+  }
+</style>
+
 <div id="main" role="main">
 
-  <div class="archive" style="max-width: 800px; margin: 0 auto; text-align: justify; padding: 1.5rem;">
+  <div class="archive">
     {% unless page.header.overlay_color or page.header.overlay_image %}
       <h1 class="page__title">{{ page.title }}</h1>
     {% endunless %}
