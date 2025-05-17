@@ -1,12 +1,21 @@
 ---
 layout: archive
 title: ""
-author_profile: true
-sidebar:
+author_profile: false
+sidebar: false
 ---
 
-<!-- Content of the page -->
-<p style="font-size: 1.1em;">Hello and welcome to my personal webpage! I am a stellar astrophysicist with a broad interest in massive stars. I have experience in stellar evolution modelling following the life and death of massive stars, as well as atmosphere modelling studying their strong stellar wind structure and mass-loss physics.</p>
+<style>
+  .page__content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1em;
+  }
+</style>
+
+<p style="font-size: 1.1em;">
+  Hello and welcome to my personal webpage! I am a stellar astrophysicist with a broad interest in massive stars. I have experience in stellar evolution modelling following the life and death of massive stars, as well as atmosphere modelling studying their strong stellar wind structure and mass-loss physics.
+</p>
 
 ## Recent Publications
 
