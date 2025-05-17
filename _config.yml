@@ -72,10 +72,8 @@ author:
 publication_category:
   books:
     title: 'Books'
-  manuscripts:
-    title: 'First author papers'    
-  collab:
-    title: 'Other collaborative papers'
+  paper:
+    title: 'Journal papers'    
   conference:
     title: 'Conference proceedings'
 
