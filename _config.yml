@@ -13,7 +13,7 @@ title                    : "Dr. Gautham Sabhahit"
 title_separator          : "-"
 name                     : &name "Gautham Sabhahit"
 description              : &description "personal description"
-url                      : https://gautham-sabhahit.github.io
+url                      : https://mdot-com.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
 
