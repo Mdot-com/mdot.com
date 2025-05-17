@@ -48,7 +48,7 @@ title: Mass-Luminosity Calculator
 <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 30px;">
   <!-- How to Use Section -->
   <div style="width: 600px; background-color: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <h2 style="text-align: center; font-size: 1em;">Python script</h2>
+    <h2 style="text-align: center; font-size: 1em;">Python scripts</h2>
     <p style="font-size: 0.8em; text-align: justify;">
       Please select the required calculator and enter either stellar mass or luminosity, hydrogen and metal abundances as mass fractions. Selecting an option from the dropdown below will load the appropriate calculator. Pressing the calculate button will provide the minimum, maximum, and pure-He values for the user input parameters. See below for stellar code and model details.
     </p>
