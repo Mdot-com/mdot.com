@@ -8,7 +8,7 @@ sidebar: false
 <style>
   .page__content,
   .archive {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 1em;
   }
@@ -27,8 +27,7 @@ sidebar: false
 
 <div class="page__content">
   <p style="font-size: 1.1em;">
-    Hello and welcome to my personal webpage! I am a stellar astrophysicist with a broad interest in massive stars. I have experience in stellar evolution modelling following the life and death of massive stars, as well as atmosphere modelling studying their strong stellar wind structure and mass-loss physics.
-  </p>
+      </p>
 
   <h2>Recent Publications</h2>
 
