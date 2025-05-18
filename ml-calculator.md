@@ -30,7 +30,7 @@ permalink: /python-scripts/
 <div id="content-wrapper">
   <h2>1. ML Calculator</h2>
   <p>
-    <a href="https://github.com/Mdot-com/Mdot-com.github.io/tree/main/scripts/ML_calculator.py" target="_blank">Download Python Script</a>
+    <a href="https://github.com/Mdot-com/Mdot-com.github.io/tree/main/scripts/ML_calculator.py" target="_blank">ML Python Script</a>
     <a href="https://gautham-sabhahit.github.io/ml-calculator/" target="_blank">Calculator</a>
   </p>
 
