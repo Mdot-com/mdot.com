@@ -15,7 +15,7 @@ main:
     url: /models/   
 
   - title: Python Scripts
-    url: /ml-calculator
+    url: /python-scripts/
   
 
  # - title: "Teaching"
