@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Python Scripts
-permalink: /python-scripts/
+title: ML_CALC
+permalink: /ML-calc/
 ---
 
 <style>
