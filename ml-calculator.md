@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Mass-Luminosity Calculator
+title: Python Scripts
+permalink: /python-scripts/
 ---
 
 <style>
