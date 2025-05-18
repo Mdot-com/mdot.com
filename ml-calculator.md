@@ -30,7 +30,7 @@ permalink: /python-scripts/
 <div id="content-wrapper">
   <h2>1. ML Calculator</h2>
   <p>
-    <a href="https://github.com/Apophis-1/Python-scripts/ML-calculator.py" target="_blank">Python script</a>
+    <a href="https://github.com/Apophis-1/Python-scripts/blob/main/ML-calculator.py" target="_blank">Python script</a>
     <a href="https://gautham-sabhahit.github.io/ml-calculator/" target="_blank">Online calculator</a>
   </p>
 
