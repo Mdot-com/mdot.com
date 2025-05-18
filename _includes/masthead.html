@@ -4,12 +4,11 @@
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
         <ul class="visible-links">
           <li class="masthead__menu-item masthead__menu-item--lg persist">
             <a href="{{ base_path }}/">Massive Star Group at Armagh Observatory</a>
           </li>
-          {% for link in site.data.navigation.main %}
+          {% for link in site.data.navigation.main limit:3 %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
             {% else %}
@@ -23,7 +22,6 @@
             <a><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
           </li>
         </ul>
-        <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
   </div>
