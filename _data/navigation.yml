@@ -11,9 +11,6 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Models"
-    url: /models/   
-
   - title: "Python Scripts"
     url: /python-scripts/
   
