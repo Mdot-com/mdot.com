@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Python Scripts
-permalink: /python-scripts/
+title: Scripts
+permalink: /scripts/
 ---
 
 <style>
